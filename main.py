@@ -13,7 +13,7 @@ targets = ["G1", "G2", "G3"]  # column names of the target attributes
 descriptors = ["age", "Medu", "Fedu", "traveltime", "studytime", "failures", "freetime", "goout", "Dalc", "Walc", "health", "absences"]  # column names of the descriptor attributes
 
 # Beam search parameters (all integers)
-w = 2  # None  # beam width
+w = 10  # None  # beam width
 d = 4  # None  # search depth
 b = 4  # None  # static binning bin size
 q = 10  # None  # top q subgroups to return

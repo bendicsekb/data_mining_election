@@ -12,14 +12,14 @@ LOGGING_PATH = "logging/logging.csv"
 def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement.DataSet):
     candidate_queue = list()
     result_set = []
-    unique_counter = 0
+    unique_counter = int(2e32)  # really large number
 
     # dataframe containing useful information on each description's quality, to be later outputted as csv
     # Note that changes to for example the columns, will require changes in the quality_measure.py functions
     quality_measure_data = pd.DataFrame(data=None, columns=["Description", "Quality", "Size of subgroup", "Size of complement"])
 
     empty_description = data_refinement.Description()
-    heapq.heappush(candidate_queue, (0, unique_counter, empty_description))
+    heapq.heappush(candidate_queue, (0, 0, empty_description))
 
     for i in range(depth):
         time_start = time.time()
@@ -31,7 +31,7 @@ def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement
                 descriptions = data_refinement.refine(seed, data, bins)
 
                 for desc in descriptions:
-                    unique_counter += 1
+                    unique_counter -= 1
 
                     quality_data = quality_measure.set_quality(desc, data, 0, quality_measure_data)
                     if quality_data is not None:
@@ -62,6 +62,7 @@ def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement
         time_end = time.time()
         print("Depth", i, "completed in %.0f seconds" % (time_end - time_start))
 
-    quality_measure_data.to_csv(LOGGING_PATH)
+    if LOGGING_PATH is not None or LOGGING_PATH != "":
+        quality_measure_data.to_csv(LOGGING_PATH)
 
     return result_set
