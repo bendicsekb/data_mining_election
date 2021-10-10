@@ -16,7 +16,7 @@ def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement
 
     # dataframe containing useful information on each description's quality, to be later outputted as csv
     # Note that changes to for example the columns, will require changes in the quality_measure.py functions
-    quality_measure_data = pd.DataFrame(data=None, columns=["Description", "Quality", "Size of subgroup", "Size of complement"])
+    quality_measure_data = pd.DataFrame(data=None, columns=["Description", "Quality", "Size of subgroup", "Size of complement", "Numerator", "Denominator"])
 
     empty_description = data_refinement.Description()
     heapq.heappush(candidate_queue, (0, 0, empty_description))
@@ -25,11 +25,10 @@ def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement
         time_start = time.time()
         beam = []
 
-        with Bar('Processing', max=len(candidate_queue)) as bar:
-            while len(candidate_queue) != 0:
-                seed = candidate_queue.pop(0)[2]  # pop the (quality, description) tuple and keep only the description
-                descriptions = data_refinement.refine(seed, data, bins)
-
+        while len(candidate_queue) != 0:
+            seed = candidate_queue.pop(0)[2]  # pop the (quality, description) tuple and keep only the description
+            descriptions = data_refinement.refine(seed, data, bins)
+            with Bar('Processing', max=len(descriptions)) as bar:
                 for desc in descriptions:
                     unique_counter -= 1
 
@@ -52,7 +51,7 @@ def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement
                     else:
                         heapq.heappushpop(beam, (desc.quality, unique_counter, desc))
 
-                bar.next()
+                    bar.next()
 
         # candidate queue is empty, so remove all descriptions from the beam
         # and insert them into the candidate queue for the next iteration
@@ -63,6 +62,6 @@ def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement
         print("Depth", i, "completed in %.0f seconds" % (time_end - time_start))
 
     if LOGGING_PATH is not None or LOGGING_PATH != "":
-        quality_measure_data.to_csv(LOGGING_PATH)
+        quality_measure_data.to_csv(LOGGING_PATH, sep=";", index=False)
 
     return result_set

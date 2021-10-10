@@ -19,7 +19,7 @@ def our_quality_measure(description: refine.Description, data: refine.DataSet, d
     subgroup_rows = len(subgroup_data.index)
     complement_rows = len(complement_data.index)
 
-    if subgroup_rows == 0 or complement_rows == 0:
+    if subgroup_rows == 0 or complement_rows <= 1:
         description.quality = 0.0
         return
 
@@ -34,13 +34,14 @@ def our_quality_measure(description: refine.Description, data: refine.DataSet, d
 
     numerator = (1 / (subgroup_rows * complement_rows)) * d_x_y_sum
     denominator = (1 / (complement_rows * (complement_rows - 1))) * d_x_x_sum
+
     if denominator == 0:
         description.quality = 0.0
         return
 
     description.quality = (numerator / denominator) * subgroup_rows
 
-    logged_info = pd.DataFrame(data=[[description.to_string(), description.quality, subgroup_rows, complement_rows]], columns=["Description", "Quality", "Size of subgroup", "Size of complement"])
+    logged_info = pd.DataFrame(data=[[description.to_string(), int(description.quality), subgroup_rows, complement_rows, int(numerator), int(denominator)]], columns=["Description", "Quality", "Size of subgroup", "Size of complement", "Numerator", "Denominator"])
     return logging_dataframe.append(logged_info)
 
 

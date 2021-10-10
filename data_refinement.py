@@ -181,9 +181,9 @@ def refine(seed: Description, data: DataSet, bins: int):
 def discretize(description: Description, attribute: str, data: pd.DataFrame, bins: int):
     intervals = []
     if len(description.rules) == 0:
-        subgroup_data = data
+        subgroup_data = data[attribute].sort_values(ascending=False)
     else:
-        subgroup_data = get_subgroup_data(description, data)
+        subgroup_data = get_subgroup_data(description, data)[attribute].sort_values(ascending=False)
 
     n = len(subgroup_data.index)
     if bins > n:  # check if there are more bins than rows
@@ -191,7 +191,7 @@ def discretize(description: Description, attribute: str, data: pd.DataFrame, bin
 
     for i in range(1, bins+1):
         index = math.floor((n - 1) / i)
-        value = subgroup_data.iloc[index][attribute]
+        value = subgroup_data.iloc[index]
         if value not in intervals:
             intervals.append(value)
 
