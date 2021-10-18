@@ -90,20 +90,6 @@ class Description:
             string = string + " with quality " + str(self.quality)
             print(string)
 
-'''
-    def __iter__(self):
-        self.n = len(self.rules)
-        return self
-
-    def __next__(self):
-        if self.n < len(self.rules):
-            result = self.rules[self.n]
-            self.n += 1
-            return result
-        else:
-            raise StopIteration
-'''
-
 
 class DataSet:
     def __init__(self, data, targets: list[str], descriptors: list[str]):
@@ -125,7 +111,7 @@ class DataSet:
 
     def set_descriptor_types(self):
         for desc in self.descriptors:
-            self.descriptor_types[desc] = RuleType.NUMERICAL  # TODO: improve
+            self.descriptor_types[desc] = RuleType.BINARY # RuleType.NUMERICAL  # TODO: improve
 
     def get_descriptor_type(self, descriptor):
         return self.descriptor_types[descriptor]
@@ -159,19 +145,29 @@ def refine(seed: Description, data: DataSet, bins: int):
             continue
 
         attribute_type = data.get_descriptor_type(attribute)
-        for operator in get_operators_per_type(attribute_type):  # new rule for every operator
-            binning_intervals = discretize(seed, attribute, data.dataframe, bins)  # define binning intervals
-            for interval in binning_intervals:  # new rule for every bin
-                new_rule = Rule(attribute_type, attribute, operator, interval)
 
-                # create new description and add to the existing list
-                # Note: somehow passing seed.rules as argument to Description() results in incorrect descriptions
-                new_desc = Description()
-                for rule in seed.rules:
-                    new_desc.add_rule(rule)
-                new_desc.add_rule(new_rule)
+        if attribute_type == RuleType.BINARY:
+            new_desc = Description()
+            eq_rule = Rule(attribute_type, attribute, "==", 1.0)
+            neq_rule = Rule(attribute_type, attribute, "!=", 1.0)
+            new_desc.add_rule(eq_rule)
+            new_desc.add_rule(neq_rule)
+            descriptions.append(new_desc)
 
-                descriptions.append(new_desc)
+        elif attribute_type == RuleType.NUMERICAL:
+            for operator in get_operators_per_type(attribute_type):  # new rule for every operator
+                binning_intervals = discretize(seed, attribute, data.dataframe, bins)  # define binning intervals
+                for interval in binning_intervals:  # new rule for every bin
+                    new_rule = Rule(attribute_type, attribute, operator, interval)
+
+                    # create new description and add to the existing list
+                    # Note: somehow passing seed.rules as argument to Description() results in incorrect descriptions
+                    new_desc = Description()
+                    for rule in seed.rules:
+                        new_desc.add_rule(rule)
+                    new_desc.add_rule(new_rule)
+
+                    descriptions.append(new_desc)
 
     return descriptions
 
