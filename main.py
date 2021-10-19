@@ -16,7 +16,7 @@ parties_rel = ['VVD (%)', 'D66 (%)', 'PVV (Partij voor de Vrijheid) (%)', 'CDA (
 PATH = "datasets/"  # file path to the datasets folder
 DEFAULT_FILE_NAME = "Demographic_and_election_dataset"  # file name without its file extension
 STARTING_INDEX = 1  # starting suffix of the set of datasets
-ENDING_INDEX = 3  # last suffix present in the set of datasets
+ENDING_INDEX = 2  # last suffix present in the set of datasets
 TARGET_DESCRIPTION = None  # description of the generated interesting subgroup
 
 # Target, descriptors, or unwanted descriptor definition
@@ -39,9 +39,9 @@ def print_setup():
     print("From starting index", STARTING_INDEX, " to ending index", ENDING_INDEX)
     print("With target attributes: ", targets)
     print("and descriptor attributes: ", descriptors)
-    print("Target description is:")
+    print("\nTarget description is:")
     TARGET_DESCRIPTION.print_description()
-    print("Beam search parameters:\n\tBeam width ", w, "\n\tSearch depth ", d, "\n\tNumber of bins ", b, "\n\tNumber of subgroups returned ", q, "\n")
+    print("\nBeam search parameters:\n\tBeam width ", w, "\n\tSearch depth ", d, "\n\tNumber of bins ", b, "\n\tNumber of subgroups returned ", q, "\n")
 
 
 def print_result(result: list[(float, int, data_refinement.Description)]):
@@ -57,8 +57,6 @@ def set_target_description():
     target_description = data_refinement.Description()
     rule = data_refinement.Rule(data_refinement.RuleType.BINARY, "a1", "==", 1.0)
     target_description.add_rule(rule)
-    rule = data_refinement.Rule(data_refinement.RuleType.BINARY, "a2", "==", 1.0)
-    target_description.add_rule(rule)
     return target_description
 
 
@@ -66,14 +64,14 @@ def process_result(top_q: list[(float, int, data_refinement.Description)]):
     if len(top_q) == 0:  # although it should not happen
         return -1
 
-    description_list = []
-    for tup in top_q:
-        description_list.append(tup[2])
+    top_q_sorted_list = sorted(top_q.copy(), key=lambda tup: tup[0], reverse=True)  # get top_q, sort descendlingly on quality
+    description_list = [tup[2] for tup in top_q_sorted_list]  # Keep only the descriptions
 
-    if TARGET_DESCRIPTION in description_list:
-        return description_list.index(TARGET_DESCRIPTION)
-    else:
-        return -1
+    for desc in description_list:
+        if desc.to_string() == TARGET_DESCRIPTION.to_string():
+            return description_list.index(desc) + 1  # Return index + 1, as indices start at 0
+
+    return -1
 
 
 if __name__ == '__main__':
@@ -138,6 +136,10 @@ if __name__ == '__main__':
         else:
             hit_rate_counter += 1
             top_q_accumulator += value
+
+        # if there is only one file to read, print the top-q
+        if ENDING_INDEX - STARTING_INDEX == 0:
+            print_result(result)
 
     end_time = time.time()
     if hit_rate_counter != 0:
