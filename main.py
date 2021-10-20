@@ -4,6 +4,7 @@ import sys
 import os
 import pandas as pd
 import time
+import tqdm
 
 import data_refinement
 import beam_search
@@ -110,6 +111,7 @@ if __name__ == '__main__':
             hit_rate_counter = 0  # counter of how many times subgroup is in the top-q
             miss_rate_counter = 0  # counter of how many times subgroup is NOT in the top-q
             start_time = time.time()
+            progress_bar = tqdm.tqdm(total=len(files))
             for file in files:
                 data = pd.read_csv(os.path.join(root, file), delimiter=",", index_col=0)
                 if len(descriptors) == 0 and len(targets) == 0:
@@ -128,6 +130,9 @@ if __name__ == '__main__':
                     hit_rate_counter += 1
                     top_q_accumulator += value
 
+                progress_bar.update(1)
+
+            progress_bar.close()
             end_time = time.time()
             if hit_rate_counter != 0:
                 average_place = top_q_accumulator / hit_rate_counter
