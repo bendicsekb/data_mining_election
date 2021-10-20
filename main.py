@@ -1,9 +1,9 @@
 # 2AMM20 Research Topic in Data Mining Group 3
 import heapq
 import sys
+import os
 import pandas as pd
 import time
-from tqdm import tqdm
 
 import data_refinement
 import beam_search
@@ -13,21 +13,17 @@ parties_abs = ['VVD', 'D66', 'PVV (Partij voor de Vrijheid)', 'CDA', 'SP (Social
 parties_rel = ['VVD (%)', 'D66 (%)', 'PVV (Partij voor de Vrijheid) (%)', 'CDA (%)', 'SP (Socialistische Partij) (%)', 'Partij van de Arbeid (P.v.d.A.) (%)', 'GROENLINKS (%)', 'Forum voor Democratie (%)', 'Partij voor de Dieren (%)', 'ChristenUnie (%)', 'Volt (%)', 'JA21 (%)', 'Staatkundig Gereformeerde Partij (SGP) (%)', 'DENK (%)', '50PLUS (%)', 'BBB (%)', 'BIJ1 (%)', 'CODE ORANJE (%)', 'NIDA (%)', 'Splinter (%)', 'Piratenpartij (%)', 'JONG (%)', 'Trots op Nederland (TROTS) (%)', 'Lijst Henk Krol (%)', 'NLBeter (%)', 'Blanco (Zeven, A.J.L.B.) (%)', 'LP (Libertaire Partij) (%)', 'OPRECHT (%)', 'JEZUS LEEFT (%)', 'DE FEESTPARTIJ (DFP) (%)', 'U-Buntu Connected Front (%)', 'Vrij en Sociaal Nederland (%)', 'Partij van de Eenheid (%)', 'Wij zijn Nederland (%)', 'Partij voor de Republiek (%)', 'Modern Nederland (%)', 'De Groenen (%)']  # column names of the target attributes
 
 # Synthetic ataset parameters
-PATH = "datasets/" #nrow100_ndescr16_ntarget16/"  # file path to the datasets folder
+PATH = "C:/Users/20173995/Desktop/2AMM20 Research Topics in Data Mining/data/synthetic/reversed/"  # file path to the datasets folder
 DEFAULT_FILE_NAME = "data"  # file name without its file extension
-STARTING_INDEX = 1  # starting suffix of the set of datasets
-ENDING_INDEX = 100  # last suffix present in the set of datasets
+#STARTING_INDEX = 1  # starting suffix of the set of datasets
+#ENDING_INDEX = 100  # last suffix present in the set of datasets
 TARGET_DESCRIPTION = None  # description of the generated interesting subgroup
 
 # Target, descriptors, or unwanted descriptor definition
 # If descriptors are empty, all attributes in the dataset, not in targets and not in unwanted_descriptors will be used
-targets = ['party1', 'party2', 'party3', 'party4', 'party5', 'party6', 'party7', 'party8', 'party9', 'party10', 'party11', 'party12', 'party13', 'party14', 'party15', 'party16']
-
-descriptors = ['descriptor1', 'descriptor2', 'descriptor3', 'descriptor4', 'descriptor5', 'descriptor6', 'descriptor7', 'descriptor8', 'descriptor9', 'descriptor10', 'descriptor11', 'descriptor12', 'descriptor13', 'descriptor14', 'descriptor15', 'descriptor16'] # column names of the descriptor attributes
-unwanted_descriptors = []
-
-
-
+#targets = []
+#descriptors = []
+#unwanted_descriptors = []
 # list(set().union(['RegioNaam', 'Region code', 'Kiesgerechtigden', 'Opkomst', 'OngeldigeStemmen', 'BlancoStemmen', 'GeldigeStemmen'], parties_abs))
 
 # Beam search parameters (all integers)
@@ -39,7 +35,7 @@ q = 10  # None  # top q subgroups to return
 
 def print_setup():
     print("\nRunning top-q beam search on datasets", DEFAULT_FILE_NAME, " at", PATH)
-    print("From starting index", STARTING_INDEX, " to ending index", ENDING_INDEX)
+    #print("From starting index", STARTING_INDEX, " to ending index", ENDING_INDEX)
     print("With target attributes: ", targets)
     print("and descriptor attributes: ", descriptors)
     print("\nTarget description is:")
@@ -95,27 +91,34 @@ if __name__ == '__main__':
         PATH = str(input("Enter the file path to the dataset: "))
     if DEFAULT_FILE_NAME == "" or DEFAULT_FILE_NAME is None:
         DEFAULT_FILE_NAME = str(input("Enter the default data file without index: "))
-    if STARTING_INDEX < 0 or STARTING_INDEX is None:
-        STARTING_INDEX = int(input("Enter the starting index: "))
-    if ENDING_INDEX is None:
-        ENDING_INDEX = int(input("Enter the ending index: "))
-    if ENDING_INDEX < STARTING_INDEX:
-        print("Ending index", ENDING_INDEX, " is less than starting index", STARTING_INDEX, " stopping")
-        raise Exception
+    #if STARTING_INDEX < 0 or STARTING_INDEX is None:
+    #    STARTING_INDEX = int(input("Enter the starting index: "))
+    #if ENDING_INDEX is None:
+    #    ENDING_INDEX = int(input("Enter the ending index: "))
+    #if ENDING_INDEX < STARTING_INDEX:
+    #    print("Ending index", ENDING_INDEX, " is less than starting index", STARTING_INDEX, " stopping")
+    #    raise Exception
     if TARGET_DESCRIPTION is None:
         TARGET_DESCRIPTION = set_target_description()
 
-    data = pd.read_csv(PATH + DEFAULT_FILE_NAME + str(STARTING_INDEX) + ".csv", delimiter=",", index_col=0)
-    print(data.head())
-    input("Please check if the data got read in correctly\n"
-          "if not then interrupt and change the parameters, or type any key to continue")
+    for (root, dirs, files) in os.walk(PATH):
+        if len(dirs) == 0:
+            for file in files:
+                data = pd.read_csv(os.path.join(root, file), delimiter=",", index_col=0)
+                print(data.head())
+                input("Please check if the data got read in correctly\n"
+                      "if not then interrupt and change the parameters, or type any key to continue")
+                break
+            break
 
+    '''
     if len(targets) == 0:
         temp = str(input("Please supply the target attributes in the format: attribute1, attribute2, .., attributex\n"))
         targets = [s.strip() for s in temp.split(",")]
     if len(descriptors) == 0:
         columns = data.columns
         descriptors = [attr for attr in columns if (attr not in targets and attr not in unwanted_descriptors)]  # descriptors != targets
+    '''
 
     if w is None:
         w = int(input("Enter the beam width size (integer): "))
@@ -128,40 +131,51 @@ if __name__ == '__main__':
 
     print_setup()
 
-    top_q_accumulator = 0  # accumulator of the places target subgroup is in the top-q
-    hit_rate_counter = 0  # counter of how many times subgroup is in the top-q
-    miss_rate_counter = 0  # counter of how many times subgroup is NOT in the top-q
-    start_time = time.time()
-    for i in tqdm(range(STARTING_INDEX, ENDING_INDEX + 1)):
-        try:
-            data = pd.read_csv(PATH + DEFAULT_FILE_NAME + str(i) + ".csv", delimiter=",", index_col=0)
-        except Exception as e:
-            if i > int(STARTING_INDEX):
-                print("Exception", e, " at file index", i, "\ncontinuing as its not the first file")
-                continue
+    output_file = pd.DataFrame(columns=["Number of rows", "Number of descriptors", "Number of targets", "Average position", "Miss rate"])
+    for (root, dirs, files) in os.walk(PATH):
+        if len(dirs) == 0:
+            folder_name = root.split("/")[-1]
+            print("Starting on", folder_name)
+            descriptors, targets = [], []
+
+            top_q_accumulator = 0  # accumulator of the places target subgroup is in the top-q
+            hit_rate_counter = 0  # counter of how many times subgroup is in the top-q
+            miss_rate_counter = 0  # counter of how many times subgroup is NOT in the top-q
+            start_time = time.time()
+            for file in files:
+                data = pd.read_csv(os.path.join(root, file), delimiter=",", index_col=0)
+                if len(descriptors) == 0 and len(targets) == 0:
+                    for column in data.columns:
+                        if "descriptor" in column:
+                            descriptors.append(column)
+                        elif "party" in column:
+                            targets.append(column)
+                dataset = data_refinement.DataSet(data, targets, descriptors)
+                result = beam_search.beam_search(w, d, b, q, dataset)
+
+                value = process_result(result)
+                if value == -1:
+                    miss_rate_counter += 1
+                else:
+                    hit_rate_counter += 1
+                    top_q_accumulator += value
+
+                # if there is only one file to read, print the top-q
+                #if ENDING_INDEX - STARTING_INDEX == 0:
+                #    print_result(result)
+
+            end_time = time.time()
+            if hit_rate_counter != 0:
+                average_place = top_q_accumulator / hit_rate_counter
             else:
-                print("Exception", e, " at the first file, stopping...")
-                raise Exception
+                average_place = pd.NA
 
-        dataset = data_refinement.DataSet(data, targets, descriptors)
-        result = beam_search.beam_search(w, d, b, q, dataset)
+            print("\nAnalysis of", folder_name, " completed in %.0f seconds" % (end_time - start_time))
 
-        value = process_result(result)
-        if value == -1:
-            miss_rate_counter += 1
-        else:
-            hit_rate_counter += 1
-            top_q_accumulator += value
+            nrows = int(folder_name.split("_")[0][4:])
+            ndescr = int(folder_name.split("_")[1][6:])
+            ntarget = int(folder_name.split("_")[2][7:])
+            output_file.loc[len(output_file)] = [nrows, ndescr, ntarget, average_place, miss_rate_counter]
+            output_file.to_csv("/".join(root.split("/")[0:len(root.split("/"))-1]) + "/results.csv", sep=",", index=False)
 
-        # if there is only one file to read, print the top-q
-        if ENDING_INDEX - STARTING_INDEX == 0:
-            print_result(result)
-
-    end_time = time.time()
-    if hit_rate_counter != 0:
-        average_place = top_q_accumulator / hit_rate_counter
-        print("Average place in the top-q:", average_place)
-    else:
-        print("Subgroup never found in top-q")
-    print("Miss rate:", miss_rate_counter)
-    print("\nAnalysis completed in %.0f seconds" % (end_time - start_time))
+            del data, dataset

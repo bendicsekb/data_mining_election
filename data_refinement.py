@@ -6,8 +6,6 @@ from enum import Enum
 binary_operators = nominal_operators = ["==", "!="]
 numerical_operators = ["<=", ">="]
 
-descriptions_strings = set()
-
 # enumerate on the possible rule types
 class RuleType(Enum):
     UNKNOWN = 0
@@ -112,6 +110,8 @@ class DataSet:
 
         self.descriptor_types = {}
         self.set_descriptor_types()
+        # set which keeps all unique descriptions
+        self.descriptions_strings = set()
 
     def set_descriptor_types(self):
         for desc in self.descriptors:
@@ -157,12 +157,12 @@ def refine(seed: Description, data: DataSet, bins: int):
             eq_desc.add_rule(eq_rule)
             neq_desc.add_rule(neq_rule)
 
-            if eq_desc.to_string() not in descriptions_strings:
+            if eq_desc.to_string() not in data.descriptions_strings:
                 descriptions.append(eq_desc)
-                descriptions_strings.add(eq_desc.to_string())
-            if neq_desc.to_string() not in descriptions_strings:
+                data.descriptions_strings.add(eq_desc.to_string())
+            if neq_desc.to_string() not in data.descriptions_strings:
                 descriptions.append(neq_desc)
-                descriptions_strings.add(neq_desc.to_string())
+                data.descriptions_strings.add(neq_desc.to_string())
 
         elif attribute_type == RuleType.NUMERICAL:
             for operator in get_operators_per_type(attribute_type):  # new rule for every operator
