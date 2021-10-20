@@ -61,7 +61,8 @@ class Rule:
 
 # A description is a set of rules containing at least one rule with a quality assigned to it
 class Description:
-    def __init__(self, rules: list[Rule] = None, quality: float = 0.0):
+    # def __init__(self, rules: list[Rule] = None, quality: float = 0.0):
+    def __init__(self, rules = None, quality: float = 0.0):
         if rules is None:
             self.rules = []
         else:
