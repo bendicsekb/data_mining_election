@@ -32,14 +32,10 @@ def our_quality_measure(description: refine.Description, data: refine.DataSet, d
         d_x_x_sum += compute_distance(sub_target_vector, sub_target_matrix, distance_function)
         d_x_y_sum += compute_distance(sub_target_vector, comp_target_matrix, distance_function)
 
-    numerator = d_x_y_sum # (1 / (subgroup_rows * complement_rows)) * d_x_y_sum
-    denominator = d_x_x_sum # (1 / (complement_rows * (complement_rows - 1))) * d_x_x_sum
+    numerator = d_x_y_sum  # (1 / (subgroup_rows * complement_rows)) * d_x_y_sum
+    denominator = d_x_x_sum  # (1 / (complement_rows * (complement_rows - 1))) * d_x_x_sum
 
-    if denominator == 0:
-        description.quality = 0.0
-        return
-
-    description.quality = (numerator / denominator)  * (subgroup_rows / complement_rows)
+    description.quality = (numerator / (denominator + 1)) * ((subgroup_rows * (subgroup_rows - 1)) / complement_rows)
 
     logged_info = pd.DataFrame(data=[[description.to_string(), round(description.quality, 4), subgroup_rows, complement_rows, round(numerator, 4), round(denominator, 4)]], columns=["Description", "Quality", "Size of subgroup", "Size of complement", "Numerator", "Denominator"])
     return logging_dataframe.append(logged_info)

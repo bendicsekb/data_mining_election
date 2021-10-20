@@ -13,23 +13,26 @@ parties_abs = ['VVD', 'D66', 'PVV (Partij voor de Vrijheid)', 'CDA', 'SP (Social
 parties_rel = ['VVD (%)', 'D66 (%)', 'PVV (Partij voor de Vrijheid) (%)', 'CDA (%)', 'SP (Socialistische Partij) (%)', 'Partij van de Arbeid (P.v.d.A.) (%)', 'GROENLINKS (%)', 'Forum voor Democratie (%)', 'Partij voor de Dieren (%)', 'ChristenUnie (%)', 'Volt (%)', 'JA21 (%)', 'Staatkundig Gereformeerde Partij (SGP) (%)', 'DENK (%)', '50PLUS (%)', 'BBB (%)', 'BIJ1 (%)', 'CODE ORANJE (%)', 'NIDA (%)', 'Splinter (%)', 'Piratenpartij (%)', 'JONG (%)', 'Trots op Nederland (TROTS) (%)', 'Lijst Henk Krol (%)', 'NLBeter (%)', 'Blanco (Zeven, A.J.L.B.) (%)', 'LP (Libertaire Partij) (%)', 'OPRECHT (%)', 'JEZUS LEEFT (%)', 'DE FEESTPARTIJ (DFP) (%)', 'U-Buntu Connected Front (%)', 'Vrij en Sociaal Nederland (%)', 'Partij van de Eenheid (%)', 'Wij zijn Nederland (%)', 'Partij voor de Republiek (%)', 'Modern Nederland (%)', 'De Groenen (%)']  # column names of the target attributes
 
 # Synthetic ataset parameters
-PATH = "datasets/"  # file path to the datasets folder
-DEFAULT_FILE_NAME = "Demographic_and_election_dataset"  # file name without its file extension
+PATH = "datasets/" #nrow100_ndescr16_ntarget16/"  # file path to the datasets folder
+DEFAULT_FILE_NAME = "data"  # file name without its file extension
 STARTING_INDEX = 1  # starting suffix of the set of datasets
-ENDING_INDEX = 2  # last suffix present in the set of datasets
+ENDING_INDEX = 100  # last suffix present in the set of datasets
 TARGET_DESCRIPTION = None  # description of the generated interesting subgroup
 
 # Target, descriptors, or unwanted descriptor definition
 # If descriptors are empty, all attributes in the dataset, not in targets and not in unwanted_descriptors will be used
-targets = []
-descriptors = []  # column names of the descriptor attributes
+targets = ['party1', 'party2', 'party3', 'party4', 'party5', 'party6', 'party7', 'party8', 'party9', 'party10', 'party11', 'party12', 'party13', 'party14', 'party15', 'party16']
+
+descriptors = ['descriptor1', 'descriptor2', 'descriptor3', 'descriptor4', 'descriptor5', 'descriptor6', 'descriptor7', 'descriptor8', 'descriptor9', 'descriptor10', 'descriptor11', 'descriptor12', 'descriptor13', 'descriptor14', 'descriptor15', 'descriptor16'] # column names of the descriptor attributes
 unwanted_descriptors = []
+
+
 
 # list(set().union(['RegioNaam', 'Region code', 'Kiesgerechtigden', 'Opkomst', 'OngeldigeStemmen', 'BlancoStemmen', 'GeldigeStemmen'], parties_abs))
 
 # Beam search parameters (all integers)
-w = 10  # None  # beam width
-d = 1  # None  # search depth
+w = 30  # None  # beam width
+d = 3  # None  # search depth
 b = 1  # None  # static binning bin size
 q = 10  # None  # top q subgroups to return
 
@@ -55,7 +58,9 @@ def print_result(result: list[(float, int, data_refinement.Description)]):
 # Set target description
 def set_target_description():
     target_description = data_refinement.Description()
-    rule = data_refinement.Rule(data_refinement.RuleType.BINARY, "a1", "==", 1.0)
+    rule = data_refinement.Rule(data_refinement.RuleType.BINARY, "descriptor1", "==", 1.0)
+    target_description.add_rule(rule)
+    rule = data_refinement.Rule(data_refinement.RuleType.BINARY, "descriptor2", "==", 1.0)
     target_description.add_rule(rule)
     return target_description
 
@@ -67,9 +72,20 @@ def process_result(top_q: list[(float, int, data_refinement.Description)]):
     top_q_sorted_list = sorted(top_q.copy(), key=lambda tup: tup[0], reverse=True)  # get top_q, sort descendlingly on quality
     description_list = [tup[2] for tup in top_q_sorted_list]  # Keep only the descriptions
 
+    # Check for every description
     for desc in description_list:
-        if desc.to_string() == TARGET_DESCRIPTION.to_string():
-            return description_list.index(desc) + 1  # Return index + 1, as indices start at 0
+        count = 0  # counter to keep track of the number of rule matches
+        if len(desc.rules) == len(TARGET_DESCRIPTION.rules):  # only match if they have the same number of rules
+            for desc_rule in desc.rules:
+                for target_rule in TARGET_DESCRIPTION.rules:
+                    # compare each rule in the top-q description against our target descriptions rule
+                    if desc_rule.to_string() == target_rule.to_string():
+                        # if they are equivalent, count 1 and break out of the current loop
+                        count += 1
+                        break
+
+            if count == len(TARGET_DESCRIPTION.rules):
+                return description_list.index(desc) + 1
 
     return -1
 
@@ -89,7 +105,7 @@ if __name__ == '__main__':
     if TARGET_DESCRIPTION is None:
         TARGET_DESCRIPTION = set_target_description()
 
-    data = pd.read_csv(PATH + DEFAULT_FILE_NAME + str(STARTING_INDEX) + ".csv", delimiter=",")
+    data = pd.read_csv(PATH + DEFAULT_FILE_NAME + str(STARTING_INDEX) + ".csv", delimiter=",", index_col=0)
     print(data.head())
     input("Please check if the data got read in correctly\n"
           "if not then interrupt and change the parameters, or type any key to continue")
@@ -118,7 +134,7 @@ if __name__ == '__main__':
     start_time = time.time()
     for i in tqdm(range(STARTING_INDEX, ENDING_INDEX + 1)):
         try:
-            data = pd.read_csv(PATH + DEFAULT_FILE_NAME + str(i) + ".csv", delimiter=",")
+            data = pd.read_csv(PATH + DEFAULT_FILE_NAME + str(i) + ".csv", delimiter=",", index_col=0)
         except Exception as e:
             if i > int(STARTING_INDEX):
                 print("Exception", e, " at file index", i, "\ncontinuing as its not the first file")

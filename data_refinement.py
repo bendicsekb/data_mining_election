@@ -6,6 +6,7 @@ from enum import Enum
 binary_operators = nominal_operators = ["==", "!="]
 numerical_operators = ["<=", ">="]
 
+descriptions_strings = set()
 
 # enumerate on the possible rule types
 class RuleType(Enum):
@@ -64,7 +65,7 @@ class Description:
         if rules is None:
             self.rules = []
         else:
-            self.rules = rules
+            self.rules = sorted(self.rules, key=lambda r: r.to_string())
 
         if quality < 0:
             raise Exception("Quality values cannot be negative")
@@ -73,6 +74,7 @@ class Description:
 
     def add_rule(self, rule: Rule):
         self.rules.append(rule)
+        self.rules = sorted(self.rules, key=lambda r: r.to_string())
 
     def to_string(self):
         string = ""
@@ -140,34 +142,41 @@ def refine(seed: Description, data: DataSet, bins: int):
     descriptions = []
 
     for attribute in data.descriptors:  # new rule for every attribute
-        # skip this attribute if it already exists in the description
-        if check_duplicate(attribute, seed):
-            continue
-
         attribute_type = data.get_descriptor_type(attribute)
 
-        if attribute_type == RuleType.BINARY:
-            new_desc = Description()
+        if attribute_type == RuleType.BINARY and not check_duplicate_attribute(attribute, seed):
+            eq_desc, neq_desc = Description(), Description()
+            for rule in seed.rules:
+                eq_desc.add_rule(rule)
+                neq_desc.add_rule(rule)
+
             eq_rule = Rule(attribute_type, attribute, "==", 1.0)
             neq_rule = Rule(attribute_type, attribute, "!=", 1.0)
-            new_desc.add_rule(eq_rule)
-            new_desc.add_rule(neq_rule)
-            descriptions.append(new_desc)
+            eq_desc.add_rule(eq_rule)
+            neq_desc.add_rule(neq_rule)
+
+            if eq_desc.to_string() not in descriptions_strings:
+                descriptions.append(eq_desc)
+                descriptions_strings.add(eq_desc.to_string())
+            if neq_desc.to_string() not in descriptions_strings:
+                descriptions.append(neq_desc)
+                descriptions_strings.add(neq_desc.to_string())
 
         elif attribute_type == RuleType.NUMERICAL:
             for operator in get_operators_per_type(attribute_type):  # new rule for every operator
-                binning_intervals = discretize(seed, attribute, data.dataframe, bins)  # define binning intervals
-                for interval in binning_intervals:  # new rule for every bin
-                    new_rule = Rule(attribute_type, attribute, operator, interval)
+                if not check_duplicate_operator(operator, seed):
+                    binning_intervals = discretize(seed, attribute, data.dataframe, bins)  # define binning intervals
+                    for interval in binning_intervals:  # new rule for every bin
+                        new_rule = Rule(attribute_type, attribute, operator, interval)
 
-                    # create new description and add to the existing list
-                    # Note: somehow passing seed.rules as argument to Description() results in incorrect descriptions
-                    new_desc = Description()
-                    for rule in seed.rules:
-                        new_desc.add_rule(rule)
-                    new_desc.add_rule(new_rule)
+                        # create new description and add to the existing list
+                        # Note: somehow passing seed.rules as argument to Description() results in incorrect descriptions
+                        new_desc = Description()
+                        for rule in seed.rules:
+                            new_desc.add_rule(rule)
+                        new_desc.add_rule(new_rule)
 
-                    descriptions.append(new_desc)
+                        descriptions.append(new_desc)
 
     return descriptions
 
@@ -195,10 +204,20 @@ def discretize(description: Description, attribute: str, data: pd.DataFrame, bin
 
 
 # Check if the passed attribute already exists in the description
-def check_duplicate(attribute: str, description: Description):
+def check_duplicate_attribute(attribute: str, description: Description):
     if len(description.rules) == 0:
         return False
     for rule in description.rules:
         if attribute == rule.attribute:
             return True
     return False
+
+
+def check_duplicate_operator(operator: str, description: Description):
+    if len(description.rules) == 0:
+        return False
+    for rule in description.rules:
+        if operator == rule.operator:
+            return True
+    return False
+
