@@ -46,8 +46,8 @@ def print_setup():
     TARGET_DESCRIPTION.print_description()
     print("\nBeam search parameters:\n\tBeam width ", w, "\n\tSearch depth ", d, "\n\tNumber of bins ", b, "\n\tNumber of subgroups returned ", q, "\n")
 
-
-def print_result(result: list[(float, int, data_refinement.Description)]):
+# def print_result(result: list[(float, int, data_refinement.Description)]):
+def print_result(result):
     print("\nFound subgroups")
     for i in reversed(range(len(result))):
         sys.stdout.write(str(i+1))
@@ -64,8 +64,8 @@ def set_target_description():
     target_description.add_rule(rule)
     return target_description
 
-
-def process_result(top_q: list[(float, int, data_refinement.Description)]):
+# def process_result(top_q: list[(float, int, data_refinement.Description)]):
+def process_result(top_q):
     if len(top_q) == 0:  # although it should not happen
         return -1
 
