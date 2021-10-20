@@ -12,18 +12,14 @@ import beam_search
 parties_abs = ['VVD', 'D66', 'PVV (Partij voor de Vrijheid)', 'CDA', 'SP (Socialistische Partij)', 'Partij van de Arbeid (P.v.d.A.)', 'GROENLINKS', 'Forum voor Democratie', 'Partij voor de Dieren', 'ChristenUnie', 'Volt', 'JA21', 'Staatkundig Gereformeerde Partij (SGP)', 'DENK', '50PLUS', 'BBB', 'BIJ1', 'CODE ORANJE', 'NIDA', 'Splinter', 'Piratenpartij', 'JONG', 'Trots op Nederland (TROTS)', 'Lijst Henk Krol', 'NLBeter', 'Blanco (Zeven, A.J.L.B.)', 'LP (Libertaire Partij)', 'OPRECHT', 'JEZUS LEEFT', 'DE FEESTPARTIJ (DFP)', 'U-Buntu Connected Front', 'Vrij en Sociaal Nederland', 'Partij van de Eenheid', 'Wij zijn Nederland', 'Partij voor de Republiek', 'Modern Nederland', 'De Groenen']  # column names of the target attributes
 parties_rel = ['VVD (%)', 'D66 (%)', 'PVV (Partij voor de Vrijheid) (%)', 'CDA (%)', 'SP (Socialistische Partij) (%)', 'Partij van de Arbeid (P.v.d.A.) (%)', 'GROENLINKS (%)', 'Forum voor Democratie (%)', 'Partij voor de Dieren (%)', 'ChristenUnie (%)', 'Volt (%)', 'JA21 (%)', 'Staatkundig Gereformeerde Partij (SGP) (%)', 'DENK (%)', '50PLUS (%)', 'BBB (%)', 'BIJ1 (%)', 'CODE ORANJE (%)', 'NIDA (%)', 'Splinter (%)', 'Piratenpartij (%)', 'JONG (%)', 'Trots op Nederland (TROTS) (%)', 'Lijst Henk Krol (%)', 'NLBeter (%)', 'Blanco (Zeven, A.J.L.B.) (%)', 'LP (Libertaire Partij) (%)', 'OPRECHT (%)', 'JEZUS LEEFT (%)', 'DE FEESTPARTIJ (DFP) (%)', 'U-Buntu Connected Front (%)', 'Vrij en Sociaal Nederland (%)', 'Partij van de Eenheid (%)', 'Wij zijn Nederland (%)', 'Partij voor de Republiek (%)', 'Modern Nederland (%)', 'De Groenen (%)']  # column names of the target attributes
 
-# Synthetic ataset parameters
+# Synthetic dataset parameters
 PATH = "C:/Users/20173995/Desktop/2AMM20 Research Topics in Data Mining/data/synthetic/reversed/"  # file path to the datasets folder
-DEFAULT_FILE_NAME = "data"  # file name without its file extension
-#STARTING_INDEX = 1  # starting suffix of the set of datasets
-#ENDING_INDEX = 100  # last suffix present in the set of datasets
-TARGET_DESCRIPTION = None  # description of the generated interesting subgroup
 
 # Target, descriptors, or unwanted descriptor definition
 # If descriptors are empty, all attributes in the dataset, not in targets and not in unwanted_descriptors will be used
-#targets = []
-#descriptors = []
-#unwanted_descriptors = []
+# targets = []
+# descriptors = []
+# unwanted_descriptors = []
 # list(set().union(['RegioNaam', 'Region code', 'Kiesgerechtigden', 'Opkomst', 'OngeldigeStemmen', 'BlancoStemmen', 'GeldigeStemmen'], parties_abs))
 
 # Beam search parameters (all integers)
@@ -32,17 +28,6 @@ d = 3  # None  # search depth
 b = 1  # None  # static binning bin size
 q = 10  # None  # top q subgroups to return
 
-
-'''
-def print_setup():
-    print("\nRunning top-q beam search on datasets", DEFAULT_FILE_NAME, " at", PATH)
-    #print("From starting index", STARTING_INDEX, " to ending index", ENDING_INDEX)
-    print("With target attributes: ", targets)
-    print("and descriptor attributes: ", descriptors)
-    print("\nTarget description is:")
-    TARGET_DESCRIPTION.print_description()
-    print("\nBeam search parameters:\n\tBeam width ", w, "\n\tSearch depth ", d, "\n\tNumber of bins ", b, "\n\tNumber of subgroups returned ", q, "\n")
-'''
 
 # def print_result(result: list[(float, int, data_refinement.Description)]):
 def print_result(result):
@@ -61,6 +46,7 @@ def set_target_description():
     rule = data_refinement.Rule(data_refinement.RuleType.BINARY, "descriptor2", "==", 1.0)
     target_description.add_rule(rule)
     return target_description
+
 
 # def process_result(top_q: list[(float, int, data_refinement.Description)]):
 def process_result(top_q):
@@ -90,18 +76,9 @@ def process_result(top_q):
 
 if __name__ == '__main__':
     if PATH == "" or PATH is None:
-        PATH = str(input("Enter the file path to the dataset: "))
-    if DEFAULT_FILE_NAME == "" or DEFAULT_FILE_NAME is None:
-        DEFAULT_FILE_NAME = str(input("Enter the default data file without index: "))
-    #if STARTING_INDEX < 0 or STARTING_INDEX is None:
-    #    STARTING_INDEX = int(input("Enter the starting index: "))
-    #if ENDING_INDEX is None:
-    #    ENDING_INDEX = int(input("Enter the ending index: "))
-    #if ENDING_INDEX < STARTING_INDEX:
-    #    print("Ending index", ENDING_INDEX, " is less than starting index", STARTING_INDEX, " stopping")
-    #    raise Exception
-    if TARGET_DESCRIPTION is None:
-        TARGET_DESCRIPTION = set_target_description()
+        PATH = str(input("Enter the file path to the datasets: "))
+
+    TARGET_DESCRIPTION = set_target_description()
 
     for (root, dirs, files) in os.walk(PATH):
         if len(dirs) == 0:
@@ -113,15 +90,6 @@ if __name__ == '__main__':
                 break
             break
 
-    '''
-    if len(targets) == 0:
-        temp = str(input("Please supply the target attributes in the format: attribute1, attribute2, .., attributex\n"))
-        targets = [s.strip() for s in temp.split(",")]
-    if len(descriptors) == 0:
-        columns = data.columns
-        descriptors = [attr for attr in columns if (attr not in targets and attr not in unwanted_descriptors)]  # descriptors != targets
-    '''
-
     if w is None:
         w = int(input("Enter the beam width size (integer): "))
     if d is None:
@@ -131,13 +99,11 @@ if __name__ == '__main__':
     if q is None:
         q = int(input("Enter the number of results to be returned (integer): "))
 
-    # print_setup()
-
     output_file = pd.DataFrame(columns=["Number of rows", "Number of descriptors", "Number of targets", "Average position", "Miss rate"])
     for (root, dirs, files) in os.walk(PATH):
         if len(dirs) == 0:
             folder_name = root.split("/")[-1]
-            print("Starting on", folder_name)
+            print("\nStarting on", folder_name)
             descriptors, targets = [], []
 
             top_q_accumulator = 0  # accumulator of the places target subgroup is in the top-q
@@ -162,17 +128,13 @@ if __name__ == '__main__':
                     hit_rate_counter += 1
                     top_q_accumulator += value
 
-                # if there is only one file to read, print the top-q
-                #if ENDING_INDEX - STARTING_INDEX == 0:
-                #    print_result(result)
-
             end_time = time.time()
             if hit_rate_counter != 0:
                 average_place = top_q_accumulator / hit_rate_counter
             else:
                 average_place = pd.NA
 
-            print("\nAnalysis of", folder_name, " completed in %.0f seconds" % (end_time - start_time))
+            print("Analysis of", folder_name, " completed in %.0f seconds" % (end_time - start_time))
 
             nrows = int(folder_name.split("_")[0][4:])
             ndescr = int(folder_name.split("_")[1][6:])
