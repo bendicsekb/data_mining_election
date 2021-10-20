@@ -89,6 +89,7 @@ def process_result(top_q):
 
 
 if __name__ == '__main__':
+    print("Hello")
     if PATH == "" or PATH is None:
         PATH = str(input("Enter the file path to the dataset: "))
     if DEFAULT_FILE_NAME == "" or DEFAULT_FILE_NAME is None:
