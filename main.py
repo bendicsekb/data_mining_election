@@ -33,6 +33,7 @@ b = 1  # None  # static binning bin size
 q = 10  # None  # top q subgroups to return
 
 
+'''
 def print_setup():
     print("\nRunning top-q beam search on datasets", DEFAULT_FILE_NAME, " at", PATH)
     #print("From starting index", STARTING_INDEX, " to ending index", ENDING_INDEX)
@@ -41,6 +42,7 @@ def print_setup():
     print("\nTarget description is:")
     TARGET_DESCRIPTION.print_description()
     print("\nBeam search parameters:\n\tBeam width ", w, "\n\tSearch depth ", d, "\n\tNumber of bins ", b, "\n\tNumber of subgroups returned ", q, "\n")
+'''
 
 # def print_result(result: list[(float, int, data_refinement.Description)]):
 def print_result(result):
@@ -129,7 +131,7 @@ if __name__ == '__main__':
     if q is None:
         q = int(input("Enter the number of results to be returned (integer): "))
 
-    print_setup()
+    # print_setup()
 
     output_file = pd.DataFrame(columns=["Number of rows", "Number of descriptors", "Number of targets", "Average position", "Miss rate"])
     for (root, dirs, files) in os.walk(PATH):
