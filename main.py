@@ -24,7 +24,7 @@ PATH = "C:/Users/20173995/Desktop/2AMM20 Research Topics in Data Mining/data/syn
 # list(set().union(['RegioNaam', 'Region code', 'Kiesgerechtigden', 'Opkomst', 'OngeldigeStemmen', 'BlancoStemmen', 'GeldigeStemmen'], parties_abs))
 
 # Beam search parameters (all integers)
-w = 30  # None  # beam width
+w = 20  # None  # beam width
 d = 3  # None  # search depth
 b = 1  # None  # static binning bin size
 q = 10  # None  # top q subgroups to return
@@ -140,11 +140,12 @@ if __name__ == '__main__':
                 average_place = pd.NA
 
             print("Analysis of", folder_name, " completed in %.0f seconds" % (end_time - start_time))
+            print("Average place:", average_place, " - miss rate:", miss_rate_counter)
 
             nrows = int(folder_name.split("_")[0][4:])
             ndescr = int(folder_name.split("_")[1][6:])
             ntarget = int(folder_name.split("_")[2][7:])
-            output_file.loc[len(output_file)] = [nrows, ndescr, ntarget, average_place, miss_rate_counter]
+            output_file.loc[len(output_file)] = [nrows, ndescr, ntarget, round(average_place, 5), miss_rate_counter]
             output_file.to_csv("/".join(root.split("/")[0:len(root.split("/"))-1]) + "/results.csv", sep=",", index=False)
 
             del data, dataset
