@@ -78,7 +78,8 @@ def process_result(top_q):
 if __name__ == '__main__':
     print("Hello")
     if PATH == "" or PATH is None:
-        PATH = str(input("Enter the file path to the datasets: "))
+        #PATH = str(input("Enter the file path to the datasets: "))
+        raise(Exception("No PATH given"))
 
     TARGET_DESCRIPTION = set_target_description()
 
@@ -87,19 +88,25 @@ if __name__ == '__main__':
             for file in files:
                 data = pd.read_csv(os.path.join(root, file), delimiter=",", index_col=0)
                 print(data.head())
-                input("Please check if the data got read in correctly\n"
+                # input("Please check if the data got read in correctly\n"
+                #       "if not then interrupt and change the parameters, or type any key to continue")
+                print("Please check if the data got read in correctly\n"
                       "if not then interrupt and change the parameters, or type any key to continue")
                 break
             break
 
     if w is None:
-        w = int(input("Enter the beam width size (integer): "))
+        # w = int(input("Enter the beam width size (integer): "))
+        raise(Exception("No beam width specified"))
     if d is None:
-        d = int(input("Enter the beam search depth (integer): "))
+        # d = int(input("Enter the beam search depth (integer): "))
+        raise(Exception("No beam search depth specified"))
     if b is None:
-        b = int(input("Enter the number of bins (integer): "))
+        # b = int(input("Enter the number of bins (integer): "))
+        raise(Exception("# of bins not specified"))
     if q is None:
-        q = int(input("Enter the number of results to be returned (integer): "))
+        # q = int(input("Enter the number of results to be returned (integer): "))
+        raise(Exception("# of results to be returned not specified"))
 
     output_file = pd.DataFrame(columns=["Number of rows", "Number of descriptors", "Number of targets", "Average position", "Miss rate"])
     for (root, dirs, files) in os.walk(PATH):
