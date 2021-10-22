@@ -14,7 +14,7 @@ parties_abs = ['VVD', 'D66', 'PVV (Partij voor de Vrijheid)', 'CDA', 'SP (Social
 parties_rel = ['VVD (%)', 'D66 (%)', 'PVV (Partij voor de Vrijheid) (%)', 'CDA (%)', 'SP (Socialistische Partij) (%)', 'Partij van de Arbeid (P.v.d.A.) (%)', 'GROENLINKS (%)', 'Forum voor Democratie (%)', 'Partij voor de Dieren (%)', 'ChristenUnie (%)', 'Volt (%)', 'JA21 (%)', 'Staatkundig Gereformeerde Partij (SGP) (%)', 'DENK (%)', '50PLUS (%)', 'BBB (%)', 'BIJ1 (%)', 'CODE ORANJE (%)', 'NIDA (%)', 'Splinter (%)', 'Piratenpartij (%)', 'JONG (%)', 'Trots op Nederland (TROTS) (%)', 'Lijst Henk Krol (%)', 'NLBeter (%)', 'Blanco (Zeven, A.J.L.B.) (%)', 'LP (Libertaire Partij) (%)', 'OPRECHT (%)', 'JEZUS LEEFT (%)', 'DE FEESTPARTIJ (DFP) (%)', 'U-Buntu Connected Front (%)', 'Vrij en Sociaal Nederland (%)', 'Partij van de Eenheid (%)', 'Wij zijn Nederland (%)', 'Partij voor de Republiek (%)', 'Modern Nederland (%)', 'De Groenen (%)']  # column names of the target attributes
 
 # Synthetic dataset parameters
-PATH = "/content/drive/MyDrive/TUe 2021Q1/2AMM20/Group 3/Dataset/synthetic data/new/reversed"  # file path to the datasets folder
+PATH = "/content/drive/MyDrive/TUe 2021Q1/2AMM20/Group 3/Dataset/synthetic data/new/last_to_first"  # file path to the datasets folder
 
 # Target, descriptors, or unwanted descriptor definition
 # If descriptors are empty, all attributes in the dataset, not in targets and not in unwanted_descriptors will be used
@@ -85,13 +85,14 @@ if __name__ == '__main__':
     for (root, dirs, files) in os.walk(PATH):
         if len(dirs) == 0:
             for file in files:
-                data = pd.read_csv(os.path.join(root, file), delimiter=",", index_col=0)
-                print(data.head())
-                # input("Please check if the data got read in correctly\n"
-                #       "if not then interrupt and change the parameters, or type any key to continue")
-                print("Please check if the data got read in correctly\n"
-                      "if not then interrupt and change the parameters, or type any key to continue")
-                break
+                if "nrows1000" not in file:
+                    data = pd.read_csv(os.path.join(root, file), delimiter=",", index_col=0)
+                    print(data.head())
+                    # input("Please check if the data got read in correctly\n"
+                    #       "if not then interrupt and change the parameters, or type any key to continue")
+                    print("Please check if the data got read in correctly\n"
+                        "if not then interrupt and change the parameters, or type any key to continue")
+                    break
             break
 
     if w is None:
@@ -109,7 +110,7 @@ if __name__ == '__main__':
 
     output_file = pd.DataFrame(columns=["Number of rows", "Number of descriptors", "Number of targets", "Average position", "Miss rate"])
     for (root, dirs, files) in os.walk(PATH):
-        if len(dirs) == 0:
+        if len(dirs) == 0 and "nrow1000" not in root:
             folder_name = os.path.split(root)[-1]
             print("\nStarting on", folder_name)
             descriptors, targets = [], []
