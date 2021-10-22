@@ -110,7 +110,7 @@ if __name__ == '__main__':
 
     output_file = pd.DataFrame(columns=["Number of rows", "Number of descriptors", "Number of targets", "Average position", "Miss rate"])
     for (root, dirs, files) in os.walk(PATH):
-        if len(dirs) == 0 and "nrow1000" not in root:
+        if len(dirs) == 0 and "nrow500" in root:
             folder_name = os.path.split(root)[-1]
             print("\nStarting on", folder_name)
             descriptors, targets = [], []
