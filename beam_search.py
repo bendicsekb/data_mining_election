@@ -4,8 +4,6 @@ import pandas as pd
 import data_refinement
 import quality_measure
 
-LOGGING_PATH = None  # "logging/logging.csv"
-
 
 def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement.DataSet):
     candidate_queue = list()
@@ -14,13 +12,13 @@ def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement
 
     # dataframe containing useful information on each description's quality, to be later outputted as csv
     # Note that changes to for example the columns, will require changes in the quality_measure.py functions
-    quality_measure_data = pd.DataFrame(data=None, columns=["Description", "Quality", "Size of subgroup", "Size of complement", "Numerator", "Denominator"])
+    pd.DataFrame(data=None, columns=["Description", "Quality", "Size of subgroup", "Size of complement", "Numerator",
+                                     "Denominator"])
 
     empty_description = data_refinement.Description()
     heapq.heappush(candidate_queue, (0, 0, empty_description))
 
     for i in range(depth):
-        #time_start = time.time()
         beam = []
 
         while len(candidate_queue) != 0:
@@ -29,7 +27,7 @@ def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement
             for desc in descriptions:
                 unique_counter -= 1
 
-                quality_data = quality_measure.set_quality(desc, data, 0, quality_measure_data)
+                quality_data = quality_measure.set_quality(desc, data, 0)
                 if quality_data is not None:
                     quality_measure_data = quality_data
 
@@ -52,11 +50,5 @@ def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement
         # and insert them into the candidate queue for the next iteration
         while len(beam) != 0:
             candidate_queue.append(beam.pop(0))
-
-        #time_end = time.time()
-        #print("Depth", i, "completed in %.0f seconds" % (time_end - time_start))
-
-    if LOGGING_PATH is not None or LOGGING_PATH != "":
-        quality_measure_data.to_csv(LOGGING_PATH, sep=";", index=False)
 
     return result_set

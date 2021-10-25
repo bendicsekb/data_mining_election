@@ -5,21 +5,21 @@ import data_refinement as refine
 
 
 # function which routes to the specified quality measure
-def set_quality(description: refine.Description, data: refine.DataSet, quality_measure_id: int, logging_dataframe: pd.DataFrame):
+def set_quality(description: refine.Description, data: refine.DataSet, quality_measure_id: int):
     if quality_measure_id == 0:
-        return our_quality_measure(description, data, "EUCLIDEAN", logging_dataframe)
+        return our_quality_measure(description, data, "EUCLIDEAN")
     else:
         raise Exception("Quality measure not defined:", quality_measure_id)
 
 
 # function which computes our currently defined quality measure
-def our_quality_measure(description: refine.Description, data: refine.DataSet, distance_function: str, logging_dataframe: pd.DataFrame):
+def our_quality_measure(description: refine.Description, data: refine.DataSet, distance_function: str):
     subgroup_data = refine.get_subgroup_data(description, data.dataframe)  # get subgroup rows from data_refinement
-    complement_data = pd.concat([data.dataframe, subgroup_data]).drop_duplicates(keep=False)  # obtain the complement rows
+    complement_data = data.dataframe.drop(labels=subgroup_data.index, axis="rows")  # obtain the complement rows
     subgroup_rows = len(subgroup_data.index)
     complement_rows = len(complement_data.index)
 
-    if subgroup_rows == 0 or complement_rows <= 1:
+    if complement_rows is 0:
         description.quality = 0.0
         return
 
@@ -36,9 +36,6 @@ def our_quality_measure(description: refine.Description, data: refine.DataSet, d
     denominator = d_x_x_sum  # (1 / (complement_rows * (complement_rows - 1))) * d_x_x_sum
 
     description.quality = (numerator / (denominator + 1)) * ((subgroup_rows * (subgroup_rows - 1)) / complement_rows)
-
-    logged_info = pd.DataFrame(data=[[description.to_string(), round(description.quality, 4), subgroup_rows, complement_rows, round(numerator, 4), round(denominator, 4)]], columns=["Description", "Quality", "Size of subgroup", "Size of complement", "Numerator", "Denominator"])
-    return logging_dataframe.append(logged_info)
 
 
 # compute distance between input vector and matrix given the specified distance function
