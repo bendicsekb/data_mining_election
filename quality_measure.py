@@ -19,7 +19,7 @@ def our_quality_measure(description: refine.Description, data: refine.DataSet, d
     subgroup_rows = len(subgroup_data.index)
     complement_rows = len(complement_data.index)
 
-    if complement_rows is 0:
+    if complement_rows == 0:
         description.quality = 0.0
         return
 
@@ -40,8 +40,14 @@ def our_quality_measure(description: refine.Description, data: refine.DataSet, d
 
 # compute distance between input vector and matrix given the specified distance function
 def compute_distance(vector: [int], matrix, function: str):
-    if function is "EUCLIDEAN":
+    if function == "EUCLIDEAN":
         return np.linalg.norm(vector - matrix)
     else:
         raise Exception("Distance function", function, "has no implemented function")
+
+# Wouter Duivesteijn paper
+def wouters_quality_measure(description: refine.Description, data: refine.DataSet, distance_function: str, logging_dataframe: pd.DataFrame):
+    pass
+    # subgroup_data = refine.get_subgroup_data(description, data.dataframe)
+    
 
