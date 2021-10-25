@@ -1,5 +1,6 @@
 import math
 import pandas as pd
+import numpy as np
 from enum import Enum
 
 # all the types and their respective operators
@@ -96,7 +97,7 @@ class DataSet:
     # def __init__(self, data, targets: list[str], descriptors: list[str]):
     def __init__(self, data, targets, descriptors):
         self.dataframe = data
-
+        
         if len(targets) == 0:
             raise Exception("User has to specify the targets for a dataset")
         else:
@@ -112,6 +113,30 @@ class DataSet:
         self.set_descriptor_types()
         # set which keeps all unique descriptions
         self.descriptions_strings = set()
+
+        # Wouter's paper
+        Mpis = np.zeros((len(data), len(self.descriptors), len(self.descriptors)))
+        for i in len(data):
+            row = data.iloc[i]
+            descr = row[self.descriptors]
+            for ii in range(len(self.descriptors)):
+                for jj in range(len(self.descriptors)):
+                    lambda_i = row[descr[ii]]
+                    lambda_j = row[descr[ii]]
+                    Mpis[i, ii,jj] = self.omega(lambda_i, lambda_j)
+
+        self.MD = np.sum(Mpis, axis=0)
+
+
+    def omega(l, l_hat):
+        retval = np.NaN
+        if l > l_hat:
+            retval = -1
+        elif l < l_hat:
+            retval = 1
+        elif l == l_hat:
+            retval = 0
+        return retval
 
     def set_descriptor_types(self):
         for desc in self.descriptors:
