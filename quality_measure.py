@@ -42,7 +42,7 @@ def our_quality_measure(description: refine.Description, data: refine.DataSet, d
 
 
 # compute distance between input vector and matrix given the specified distance function
-def compute_distance(vector: [int], matrix, function: str):
+def compute_distance(vector, matrix, function: str):
     if function is "EUCLIDEAN":
         return np.linalg.norm(vector - matrix)
     else:
