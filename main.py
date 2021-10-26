@@ -14,7 +14,7 @@ parties_abs = ['VVD', 'D66', 'PVV (Partij voor de Vrijheid)', 'CDA', 'SP (Social
 parties_rel = ['VVD (%)', 'D66 (%)', 'PVV (Partij voor de Vrijheid) (%)', 'CDA (%)', 'SP (Socialistische Partij) (%)', 'Partij van de Arbeid (P.v.d.A.) (%)', 'GROENLINKS (%)', 'Forum voor Democratie (%)', 'Partij voor de Dieren (%)', 'ChristenUnie (%)', 'Volt (%)', 'JA21 (%)', 'Staatkundig Gereformeerde Partij (SGP) (%)', 'DENK (%)', '50PLUS (%)', 'BBB (%)', 'BIJ1 (%)', 'CODE ORANJE (%)', 'NIDA (%)', 'Splinter (%)', 'Piratenpartij (%)', 'JONG (%)', 'Trots op Nederland (TROTS) (%)', 'Lijst Henk Krol (%)', 'NLBeter (%)', 'Blanco (Zeven, A.J.L.B.) (%)', 'LP (Libertaire Partij) (%)', 'OPRECHT (%)', 'JEZUS LEEFT (%)', 'DE FEESTPARTIJ (DFP) (%)', 'U-Buntu Connected Front (%)', 'Vrij en Sociaal Nederland (%)', 'Partij van de Eenheid (%)', 'Wij zijn Nederland (%)', 'Partij voor de Republiek (%)', 'Modern Nederland (%)', 'De Groenen (%)']  # column names of the target attributes
 
 # Synthetic dataset parameters
-PATH = "C:/Users/Studio/Documents/projects/TUe/reversed_100"  # file path to the datasets folder
+PATH = "C:/Users/Studio/Documents/projects/TUe/last_to_first_orig"  # file path to the datasets folder
 
 # Target, descriptors, or unwanted descriptor definition
 # If descriptors are empty, all attributes in the dataset, not in targets and not in unwanted_descriptors will be used
@@ -101,10 +101,10 @@ if __name__ == '__main__':
         q = int(input("Enter the number of results to be returned (integer): "))
 
     # tested_methods = [data_refinement.Method.OUR,data_refinement.Method.NORM,data_refinement.Method.LABELWISE,data_refinement.Method.PAIRWISE]
-    tested_methods = [data_refinement.Method.OUR,data_refinement.Method.NORM]
+    tested_methods = [data_refinement.Method.NORM]
     output_files = [pd.DataFrame(columns=["Number of rows",
      "Number of descriptors", "Number of targets", 
-     "Average position", "Miss rate"]) for _ in range(len(tested_methods))]
+     "Average position", "Miss rate"]) for _ in range(tested_methods[-1].value + 1)]
     for (root, dirs, files) in os.walk(PATH):
         if len(dirs) == 0:
             for method in tested_methods:
