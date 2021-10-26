@@ -100,7 +100,9 @@ if __name__ == '__main__':
     if q is None:
         q = int(input("Enter the number of results to be returned (integer): "))
 
-    output_files = 4 * [pd.DataFrame(columns=["Number of rows", "Number of descriptors", "Number of targets", "Average position", "Miss rate"])]
+    output_files = [pd.DataFrame(columns=["Number of rows",
+     "Number of descriptors", "Number of targets", 
+     "Average position", "Miss rate"]) for _ in range(4)]
     for (root, dirs, files) in os.walk(PATH):
         if len(dirs) == 0:
             for method in [data_refinement.Method.OUR,data_refinement.Method.NORM,data_refinement.Method.LABELWISE,data_refinement.Method.PAIRWISE]:
