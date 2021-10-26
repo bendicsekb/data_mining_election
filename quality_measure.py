@@ -11,7 +11,7 @@ def set_quality(description: refine.Description, data: refine.DataSet, method: r
     elif method in [refine.Method.NORM, refine.Method.LABELWISE, refine.Method.PAIRWISE]:
         return wouters_quality_measure(description=description, data=data, method=method)
     else:
-        raise Exception("Quality measure not defined:", quality_measure_id)
+        raise Exception("Quality measure not defined:", method)
 
 
 # function which computes our currently defined quality measure

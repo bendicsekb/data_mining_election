@@ -100,53 +100,54 @@ if __name__ == '__main__':
     if q is None:
         q = int(input("Enter the number of results to be returned (integer): "))
 
-    output_file = pd.DataFrame(columns=["Number of rows", "Number of descriptors", "Number of targets", "Average position", "Miss rate"])
+    output_files = 4 * [pd.DataFrame(columns=["Number of rows", "Number of descriptors", "Number of targets", "Average position", "Miss rate"])]
     for (root, dirs, files) in os.walk(PATH):
         if len(dirs) == 0:
-            folder_name = os.path.split(root)[-1]
-            print("\nStarting on", folder_name)
-            descriptors, targets = [], []
+            for method in [data_refinement.Method.OUR,data_refinement.Method.NORM,data_refinement.Method.LABELWISE,data_refinement.Method.PAIRWISE]:
+                folder_name = os.path.split(root)[-1]
+                print("\nStarting on", folder_name, f"\t Method: {data_refinement.Method(method).name}")
+                descriptors, targets = [], []
 
-            top_q_accumulator = 0  # accumulator of the places target subgroup is in the top-q
-            hit_rate_counter = 0  # counter of how many times subgroup is in the top-q
-            miss_rate_counter = 0  # counter of how many times subgroup is NOT in the top-q
-            start_time = time.time()
-            progress_bar = tqdm.tqdm(total=len(files))
-            for file in files:
-                data = pd.read_csv(os.path.join(root, file), delimiter=",", index_col=0)
-                if len(descriptors) == 0 and len(targets) == 0:
-                    for column in data.columns:
-                        if "descriptor" in column:
-                            descriptors.append(column)
-                        elif "party" in column:
-                            targets.append(column)
-                dataset = data_refinement.DataSet(data, targets, descriptors)
-                method = data_refinement.Method.LABELWISE
-                result = beam_search.beam_search(w, d, b, q, dataset, method)
+                top_q_accumulator = 0  # accumulator of the places target subgroup is in the top-q
+                hit_rate_counter = 0  # counter of how many times subgroup is in the top-q
+                miss_rate_counter = 0  # counter of how many times subgroup is NOT in the top-q
+                start_time = time.time()
+                progress_bar = tqdm.tqdm(total=len(files))
+                
+                for file in files:
+                    data = pd.read_csv(os.path.join(root, file), delimiter=",", index_col=0)
+                    if len(descriptors) == 0 and len(targets) == 0:
+                        for column in data.columns:
+                            if "descriptor" in column:
+                                descriptors.append(column)
+                            elif "party" in column:
+                                targets.append(column)
+                    dataset = data_refinement.DataSet(data, targets, descriptors)
+                    result = beam_search.beam_search(w, d, b, q, dataset, method)
 
-                value = process_result(result)
-                if value == -1:
-                    miss_rate_counter += 1
+                    value = process_result(result)
+                    if value == -1:
+                        miss_rate_counter += 1
+                    else:
+                        hit_rate_counter += 1
+                        top_q_accumulator += value
+
+                    progress_bar.update(1)
+
+                progress_bar.close()
+                end_time = time.time()
+                if hit_rate_counter != 0:
+                    average_place = top_q_accumulator / hit_rate_counter
                 else:
-                    hit_rate_counter += 1
-                    top_q_accumulator += value
+                    average_place = pd.NA
 
-                progress_bar.update(1)
+                print("Analysis of", folder_name, " completed in %.0f seconds" % (end_time - start_time))
+                print("Average place:", average_place, " - miss rate:", miss_rate_counter)
 
-            progress_bar.close()
-            end_time = time.time()
-            if hit_rate_counter != 0:
-                average_place = top_q_accumulator / hit_rate_counter
-            else:
-                average_place = pd.NA
+                nrows = int(folder_name.split("_")[0][4:])
+                ndescr = int(folder_name.split("_")[1][6:])
+                ntarget = int(folder_name.split("_")[2][7:])
+                output_files[method.value].loc[len(output_files[method.value])] = [nrows, ndescr, ntarget, round(average_place, 5) if average_place is not pd.NA else pd.NA, miss_rate_counter]
+                output_files[method.value].to_csv("/".join(root.split("/")[0:len(root.split("/"))-1]) + f"/results_{data_refinement.Method(method).name}.csv", sep=",", index=False)
 
-            print("Analysis of", folder_name, " completed in %.0f seconds" % (end_time - start_time))
-            print("Average place:", average_place, " - miss rate:", miss_rate_counter)
-
-            nrows = int(folder_name.split("_")[0][4:])
-            ndescr = int(folder_name.split("_")[1][6:])
-            ntarget = int(folder_name.split("_")[2][7:])
-            output_file.loc[len(output_file)] = [nrows, ndescr, ntarget, round(average_place, 5) if average_place is not pd.NA else pd.NA, miss_rate_counter]
-            output_file.to_csv("/".join(root.split("/")[0:len(root.split("/"))-1]) + "/results.csv", sep=",", index=False)
-
-            del data, dataset
+                del data, dataset
