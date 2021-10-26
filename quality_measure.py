@@ -49,23 +49,22 @@ def compute_distance(vector: [int], matrix, function: str):
 
 # Wouter Duivesteijn paper
 def wouters_quality_measure(description: refine.Description, data: refine.DataSet, method: refine.Method):
-    subgroup_data = refine.get_subgroup_data(description, data.dataframe)
+    target_data = refine.get_subgroup_data(description, data.dataframe)[data.targets].to_numpy()
     # Calculate M<pi> (preference matrix representing the subgroup)
-    Mpis = np.zeros((len(subgroup_data), *2*[len(data.targets)]))
-    for i in range(len(subgroup_data)):
-        row = subgroup_data.iloc[i]
-        trgts = row[data.targets]
-        for ii in range(len(data.targets)):
-            for jj in range(len(data.targets)):
-                lambda_i = trgts.iloc[ii]
-                lambda_j = trgts.iloc[jj]
-                Mpis[i, ii,jj] = data.omega(lambda_i, lambda_j)
+    Mpis = np.zeros((len(target_data), *2*[len(data.targets)]))
+    for index in range(len(target_data)):
+        targets = target_data[index]
+        for ii in range(len(targets)):
+            for jj in range(len(targets)):
+                lambda_i = targets[ii]
+                lambda_j = targets[jj]
+                Mpis[index, ii,jj] = data.omega(lambda_i, lambda_j)
     # Ld = MD - MS -> the distance matrix
-    MS = 1/ len(subgroup_data) * np.sum(Mpis, axis=0)
+    MS = 1 / len(target_data) * np.sum(Mpis, axis=0)
     Ld = data.MD - MS
 
     # sqrt(s/n) The sqrt of the fraction of the dataset covered by s: Size<s>
-    normalization_factor = sqrt(len(subgroup_data)/len(data.dataframe))
+    normalization_factor = sqrt(len(target_data)/len(data.dataframe))
     quality = 0
     # Calculate quality based on method 
     if method == refine.Method.NORM:
@@ -78,5 +77,4 @@ def wouters_quality_measure(description: refine.Description, data: refine.DataSe
         max_elem = Ld.max()
         quality = normalization_factor * max_elem
     description.quality = quality
-    
 
