@@ -5,7 +5,7 @@ import data_refinement
 import quality_measure
 
 
-def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement.DataSet):
+def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement.DataSet, method: data_refinement.Method):
     candidate_queue = list()
     result_set = []
     unique_counter = int(2e32)  # really large number
@@ -27,7 +27,7 @@ def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement
             for desc in descriptions:
                 unique_counter -= 1
 
-                quality_data = quality_measure.set_quality(desc, data, 1)
+                quality_data = quality_measure.set_quality(desc, data, method)
                 if quality_data is not None:
                     quality_measure_data = quality_data
 

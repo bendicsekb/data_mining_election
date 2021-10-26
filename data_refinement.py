@@ -14,6 +14,12 @@ class RuleType(Enum):
     NOMINAL = 2
     NUMERICAL = 3
 
+class Method(Enum):
+    OUR = 0
+    NORM = 1
+    LABELWISE = 2
+    PAIRWISE = 3
+
 
 # Given a rule type, return a list of operators for that rule type
 def get_operators_per_type(rule_type: RuleType):

@@ -4,20 +4,12 @@ import numpy as np
 
 import data_refinement as refine
 
-from enum import Enum
-
-class Method(Enum):
-    NORM = 1
-    LABELWISE = 2
-    PAIRWISE = 3
-
-
 # function which routes to the specified quality measure
-def set_quality(description: refine.Description, data: refine.DataSet, quality_measure_id: int):
-    if quality_measure_id == 0:
+def set_quality(description: refine.Description, data: refine.DataSet, method: refine.Method):
+    if method == refine.Method.OUR:
         return our_quality_measure(description, data, "EUCLIDEAN")
-    elif quality_measure_id == 1:
-        return wouters_quality_measure(description=description, data=data, method=Method.NORM)
+    elif method in [refine.Method.NORM, refine.Method.LABELWISE, refine.Method.PAIRWISE]:
+        return wouters_quality_measure(description=description, data=data, method=method)
     else:
         raise Exception("Quality measure not defined:", quality_measure_id)
 
@@ -56,8 +48,9 @@ def compute_distance(vector: [int], matrix, function: str):
         raise Exception("Distance function", function, "has no implemented function")
 
 # Wouter Duivesteijn paper
-def wouters_quality_measure(description: refine.Description, data: refine.DataSet, method: Method):
+def wouters_quality_measure(description: refine.Description, data: refine.DataSet, method: refine.Method):
     subgroup_data = refine.get_subgroup_data(description, data.dataframe)
+    # Calculate M<pi> (preference matrix representing the subgroup)
     Mpis = np.zeros((len(subgroup_data), *2*[len(data.targets)]))
     for i in range(len(subgroup_data)):
         row = subgroup_data.iloc[i]
@@ -67,17 +60,23 @@ def wouters_quality_measure(description: refine.Description, data: refine.DataSe
                 lambda_i = trgts.iloc[ii]
                 lambda_j = trgts.iloc[jj]
                 Mpis[i, ii,jj] = data.omega(lambda_i, lambda_j)
-
+    # Ld = MD - MS -> the distance matrix
     MS = 1/ len(subgroup_data) * np.sum(Mpis, axis=0)
     Ld = data.MD - MS
+
+    # sqrt(s/n) The sqrt of the fraction of the dataset covered by s: Size<s>
     normalization_factor = sqrt(len(subgroup_data)/len(data.dataframe))
     quality = 0
-    if method == Method.NORM:
+    # Calculate quality based on method 
+    if method == refine.Method.NORM:
         quality = normalization_factor * np.linalg.norm(Ld)
-    elif method == Method.LABELWISE:
-        pass
-    elif method == Method.PAIRWISE:
-        pass
+    elif method == refine.Method.LABELWISE:
+        row_sums = np.sum(Ld, axis= 1)
+        max_row = np.max(row_sums)
+        quality = normalization_factor * 1/(Ld.shape[0]-1) * max_row
+    elif method == refine.Method.PAIRWISE:
+        max_elem = Ld.max()
+        quality = normalization_factor * max_elem
     description.quality = quality
     
 

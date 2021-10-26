@@ -121,7 +121,8 @@ if __name__ == '__main__':
                         elif "party" in column:
                             targets.append(column)
                 dataset = data_refinement.DataSet(data, targets, descriptors)
-                result = beam_search.beam_search(w, d, b, q, dataset)
+                method = data_refinement.Method.LABELWISE
+                result = beam_search.beam_search(w, d, b, q, dataset, method)
 
                 value = process_result(result)
                 if value == -1:
