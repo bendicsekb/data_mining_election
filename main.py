@@ -14,11 +14,7 @@ parties_abs = ['VVD', 'D66', 'PVV (Partij voor de Vrijheid)', 'CDA', 'SP (Social
 parties_rel = ['VVD (%)', 'D66 (%)', 'PVV (Partij voor de Vrijheid) (%)', 'CDA (%)', 'SP (Socialistische Partij) (%)', 'Partij van de Arbeid (P.v.d.A.) (%)', 'GROENLINKS (%)', 'Forum voor Democratie (%)', 'Partij voor de Dieren (%)', 'ChristenUnie (%)', 'Volt (%)', 'JA21 (%)', 'Staatkundig Gereformeerde Partij (SGP) (%)', 'DENK (%)', '50PLUS (%)', 'BBB (%)', 'BIJ1 (%)', 'CODE ORANJE (%)', 'NIDA (%)', 'Splinter (%)', 'Piratenpartij (%)', 'JONG (%)', 'Trots op Nederland (TROTS) (%)', 'Lijst Henk Krol (%)', 'NLBeter (%)', 'Blanco (Zeven, A.J.L.B.) (%)', 'LP (Libertaire Partij) (%)', 'OPRECHT (%)', 'JEZUS LEEFT (%)', 'DE FEESTPARTIJ (DFP) (%)', 'U-Buntu Connected Front (%)', 'Vrij en Sociaal Nederland (%)', 'Partij van de Eenheid (%)', 'Wij zijn Nederland (%)', 'Partij voor de Republiek (%)', 'Modern Nederland (%)', 'De Groenen (%)']  # column names of the target attributes
 
 # Synthetic dataset parameters
-<<<<<<< HEAD
 PATH = "C:/Users/Studio/Documents/projects/TUe/last_to_first_orig"  # file path to the datasets folder
-=======
-PATH = "C:/Users/20173995/Desktop/2AMM20 Research Topics in Data Mining/data/synthetic/last_to_first"  # file path to the datasets folder
->>>>>>> 0703065311a163dd177c304097c42afd815b3d15
 
 # Target, descriptors, or unwanted descriptor definition
 # If descriptors are empty, all attributes in the dataset, not in targets and not in unwanted_descriptors will be used
