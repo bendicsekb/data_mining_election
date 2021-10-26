@@ -100,12 +100,14 @@ if __name__ == '__main__':
     if q is None:
         q = int(input("Enter the number of results to be returned (integer): "))
 
+    # tested_methods = [data_refinement.Method.OUR,data_refinement.Method.NORM,data_refinement.Method.LABELWISE,data_refinement.Method.PAIRWISE]
+    tested_methods = [data_refinement.Method.OUR,data_refinement.Method.NORM]
     output_files = [pd.DataFrame(columns=["Number of rows",
      "Number of descriptors", "Number of targets", 
-     "Average position", "Miss rate"]) for _ in range(4)]
+     "Average position", "Miss rate"]) for _ in range(len(tested_methods))]
     for (root, dirs, files) in os.walk(PATH):
         if len(dirs) == 0:
-            for method in [data_refinement.Method.OUR,data_refinement.Method.NORM,data_refinement.Method.LABELWISE,data_refinement.Method.PAIRWISE]:
+            for method in tested_methods:
                 folder_name = os.path.split(root)[-1]
                 print("\nStarting on", folder_name, f"\t Method: {data_refinement.Method(method).name}")
                 descriptors, targets = [], []
