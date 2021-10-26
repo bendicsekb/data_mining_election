@@ -115,20 +115,20 @@ class DataSet:
         self.descriptions_strings = set()
 
         # Wouter's paper
-        Mpis = np.zeros((len(data), len(self.descriptors), len(self.descriptors)))
-        for i in len(data):
+        Mpis = np.zeros((len(data), len(self.targets), len(self.targets)))
+        for i in range(len(data)):
             row = data.iloc[i]
-            descr = row[self.descriptors]
-            for ii in range(len(self.descriptors)):
-                for jj in range(len(self.descriptors)):
-                    lambda_i = row[descr[ii]]
-                    lambda_j = row[descr[ii]]
+            trgts = row[self.targets]
+            for ii in range(len(self.targets)):
+                for jj in range(len(self.targets)):
+                    lambda_i = trgts.iloc[ii]
+                    lambda_j = trgts.iloc[jj]
                     Mpis[i, ii,jj] = self.omega(lambda_i, lambda_j)
 
-        self.MD = np.sum(Mpis, axis=0)
+        self.MD = 1/ len(data) * np.sum(Mpis, axis=0)
 
 
-    def omega(l, l_hat):
+    def omega(self, l, l_hat):
         retval = np.NaN
         if l > l_hat:
             retval = -1

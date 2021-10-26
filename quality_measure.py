@@ -1,13 +1,23 @@
+from math import sqrt
 import pandas as pd
 import numpy as np
 
 import data_refinement as refine
+
+from enum import Enum
+
+class Method(Enum):
+    NORM = 1
+    LABELWISE = 2
+    PAIRWISE = 3
 
 
 # function which routes to the specified quality measure
 def set_quality(description: refine.Description, data: refine.DataSet, quality_measure_id: int):
     if quality_measure_id == 0:
         return our_quality_measure(description, data, "EUCLIDEAN")
+    elif quality_measure_id == 1:
+        return wouters_quality_measure(description=description, data=data, method=Method.NORM)
     else:
         raise Exception("Quality measure not defined:", quality_measure_id)
 
@@ -46,8 +56,28 @@ def compute_distance(vector: [int], matrix, function: str):
         raise Exception("Distance function", function, "has no implemented function")
 
 # Wouter Duivesteijn paper
-def wouters_quality_measure(description: refine.Description, data: refine.DataSet, distance_function: str, logging_dataframe: pd.DataFrame):
-    pass
-    # subgroup_data = refine.get_subgroup_data(description, data.dataframe)
+def wouters_quality_measure(description: refine.Description, data: refine.DataSet, method: Method):
+    subgroup_data = refine.get_subgroup_data(description, data.dataframe)
+    Mpis = np.zeros((len(subgroup_data), *2*[len(data.targets)]))
+    for i in range(len(subgroup_data)):
+        row = subgroup_data.iloc[i]
+        trgts = row[data.targets]
+        for ii in range(len(data.targets)):
+            for jj in range(len(data.targets)):
+                lambda_i = trgts.iloc[ii]
+                lambda_j = trgts.iloc[jj]
+                Mpis[i, ii,jj] = data.omega(lambda_i, lambda_j)
+
+    MS = 1/ len(subgroup_data) * np.sum(Mpis, axis=0)
+    Ld = data.MD - MS
+    normalization_factor = sqrt(len(subgroup_data)/len(data.dataframe))
+    quality = 0
+    if method == Method.NORM:
+        quality = normalization_factor * np.linalg.norm(Ld)
+    elif method == Method.LABELWISE:
+        pass
+    elif method == Method.PAIRWISE:
+        pass
+    description.quality = quality
     
 

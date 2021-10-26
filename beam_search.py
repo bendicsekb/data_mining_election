@@ -27,7 +27,7 @@ def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement
             for desc in descriptions:
                 unique_counter -= 1
 
-                quality_data = quality_measure.set_quality(desc, data, 0)
+                quality_data = quality_measure.set_quality(desc, data, 1)
                 if quality_data is not None:
                     quality_measure_data = quality_data
 
