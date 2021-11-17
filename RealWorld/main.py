@@ -100,7 +100,7 @@ if __name__ == '__main__':
     print("descriptors", descriptors)
 
     dataset = data_refinement.DataSet(data, targets, descriptors)
-    result = beam_search.beam_search(w, d, b, q, dataset, data_refinement.Method.LABELWISE)
+    result = beam_search.beam_search(w, d, b, q, dataset, data_refinement.Method.OUR)
     end_time = time.time()
     print_result(result)
     print("Runtime", round(end_time - start_time, 2), "sec")
