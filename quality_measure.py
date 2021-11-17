@@ -1,4 +1,4 @@
-from math import sqrt
+from math import log10, sqrt
 import pandas as pd
 import numpy as np
 
@@ -20,6 +20,7 @@ def our_quality_measure(description: refine.Description, data: refine.DataSet, d
     complement_data = data.dataframe.drop(labels=subgroup_data.index, axis="rows")  # obtain the complement rows
     subgroup_rows = len(subgroup_data.index)
     complement_rows = len(complement_data.index)
+    all_rows = len(data.dataframe.index)
 
     if complement_rows == 0:
         description.quality = 0.0
@@ -36,8 +37,12 @@ def our_quality_measure(description: refine.Description, data: refine.DataSet, d
 
     numerator = d_x_y_sum  # (1 / (subgroup_rows * complement_rows)) * d_x_y_sum
     denominator = d_x_x_sum  # (1 / (complement_rows * (complement_rows - 1))) * d_x_x_sum
-
-    description.quality = (numerator / (denominator + 1)) * ((subgroup_rows * (subgroup_rows - 1)) / complement_rows)
+    subgroup_size_factor = {
+        "original": ((subgroup_rows * (subgroup_rows - 1)) / complement_rows),
+        # -(n/N)lg(n/N)-(nC/N)lg(nC/N)
+        "entropy-based": -((subgroup_rows/all_rows)*log10(subgroup_rows/all_rows))-((complement_rows/all_rows)*log10(complement_rows/all_rows))
+    }
+    description.quality = (numerator / (denominator + 1)) * subgroup_size_factor["entropy-based"]
 
 
 # compute distance between input vector and matrix given the specified distance function
