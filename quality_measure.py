@@ -31,8 +31,16 @@ def our_quality_measure(description: refine.Description, data: refine.DataSet, m
     d_x_y_sum = 0
     for i in range(subgroup_rows):
         sub_target_vector = subgroup_data[i]
-        d_x_x_sum += np.sqrt(((sub_target_vector - subgroup_data) ** 2).sum())
-        d_x_y_sum += np.sqrt(((sub_target_vector - complement_data) ** 2).sum())
+
+        # slow but correct implementation
+        # for j in range(subgroup_rows):
+        #    d_x_x_sum += np.linalg.norm(sub_target_vector - subgroup_data[j])
+        # for k in range(complement_rows):
+        #    d_x_y_sum += np.linalg.norm(sub_target_vector - complement_data[k])
+
+        # faster method
+        d_x_x_sum += np.sqrt(np.sum(((sub_target_vector - subgroup_data) ** 2), axis=1)).sum()
+        d_x_y_sum += np.sqrt(np.sum(((sub_target_vector - complement_data) ** 2), axis=1)).sum()
 
     numerator = (1.0 / (subgroup_rows * complement_rows)) * d_x_y_sum
     denominator = (1.0 / (subgroup_rows * (subgroup_rows - 1))) * d_x_x_sum
