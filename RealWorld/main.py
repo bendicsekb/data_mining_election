@@ -25,7 +25,7 @@ unwanted_descriptors = ['RegioNaam', 'Region code', 'Kiesgerechtigden', 'Opkomst
 
 # Beam search parameters (all integers)
 w = 30  # None  # beam width
-d = 3  # None  # search depth
+d = 1  # None  # search depth
 b = 8  # None  # static binning bin size
 q = 50  # None  # top q subgroups to return
 
@@ -100,7 +100,7 @@ if __name__ == '__main__':
     print("descriptors", descriptors)
 
     dataset = data_refinement.DataSet(data, targets, descriptors)
-    result = beam_search.beam_search(w, d, b, q, dataset, data_refinement.Method.OUR)
+    result = beam_search.beam_search(w, d, b, q, dataset, data_refinement.Method.OUR_N)
     end_time = time.time()
     print_result(result)
     print("Runtime", round(end_time - start_time, 2), "sec")
