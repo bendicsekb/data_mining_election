@@ -1,4 +1,4 @@
-from math import sqrt
+from math import log10, sqrt
 import pandas as pd
 import numpy as np
 
@@ -6,8 +6,8 @@ import data_refinement as refine
 
 # function which routes to the specified quality measure
 def set_quality(description: refine.Description, data: refine.DataSet, method: refine.Method):
-    if method == refine.Method.OUR:
-        return our_quality_measure(description, data, "EUCLIDEAN")
+    if method in [refine.Method.OUR_N, refine.Method.OUR_SQRT, refine.Method.OUR_ENTROPY]:
+        return our_quality_measure(description, data, method)
     elif method in [refine.Method.NORM, refine.Method.LABELWISE, refine.Method.PAIRWISE]:
         return wouters_quality_measure(description=description, data=data, method=method)
     else:
@@ -15,29 +15,42 @@ def set_quality(description: refine.Description, data: refine.DataSet, method: r
 
 
 # function which computes our currently defined quality measure
-def our_quality_measure(description: refine.Description, data: refine.DataSet, distance_function: str):
-    subgroup_data = refine.get_subgroup_data(description, data.dataframe)  # get subgroup rows from data_refinement
-    complement_data = data.dataframe.drop(labels=subgroup_data.index, axis="rows")  # obtain the complement rows
-    subgroup_rows = len(subgroup_data.index)
-    complement_rows = len(complement_data.index)
+def our_quality_measure(description: refine.Description, data: refine.DataSet, method: refine.Method):
+    subgroup_data = refine.get_subgroup_data(description, data.dataframe)[data.targets]  # get subgroup rows from data_refinement
+    complement_data = data.dataframe.drop(labels=subgroup_data.index, axis="rows")[data.targets].to_numpy()  # obtain the complement rows
+    subgroup_data = subgroup_data.to_numpy()
+    subgroup_rows = len(subgroup_data)
+    complement_rows = len(complement_data)
+    all_rows = subgroup_rows + complement_rows
 
-    if complement_rows == 0:
+    if subgroup_rows <= 1 or complement_rows == 0:
         description.quality = 0.0
         return
 
     d_x_x_sum = 0
     d_x_y_sum = 0
-    sub_target_matrix = subgroup_data[data.targets]
-    comp_target_matrix = complement_data[data.targets]
-    for sub_index, sub_row in subgroup_data.iterrows():
-        sub_target_vector = sub_row[data.targets]
-        d_x_x_sum += compute_distance(sub_target_vector, sub_target_matrix, distance_function)
-        d_x_y_sum += compute_distance(sub_target_vector, comp_target_matrix, distance_function)
+    for i in range(subgroup_rows):
+        sub_target_vector = subgroup_data[i]
 
-    numerator = d_x_y_sum  # (1 / (subgroup_rows * complement_rows)) * d_x_y_sum
-    denominator = d_x_x_sum  # (1 / (complement_rows * (complement_rows - 1))) * d_x_x_sum
+        # slow but correct implementation
+        # for j in range(subgroup_rows):
+        #    d_x_x_sum += np.linalg.norm(sub_target_vector - subgroup_data[j])
+        # for k in range(complement_rows):
+        #    d_x_y_sum += np.linalg.norm(sub_target_vector - complement_data[k])
 
-    description.quality = (numerator / (denominator + 1)) * ((subgroup_rows * (subgroup_rows - 1)) / complement_rows)
+        # faster method
+        d_x_x_sum += np.sqrt(np.sum(((sub_target_vector - subgroup_data) ** 2), axis=1)).sum()
+        d_x_y_sum += np.sqrt(np.sum(((sub_target_vector - complement_data) ** 2), axis=1)).sum()
+
+    numerator = (1.0 / (subgroup_rows * complement_rows)) * d_x_y_sum
+    denominator = (1.0 / (subgroup_rows * (subgroup_rows - 1))) * d_x_x_sum
+
+    if method == refine.Method.OUR_N:
+        description.quality = (numerator / (denominator + 1)) * subgroup_rows
+    elif method == refine.Method.OUR_SQRT:
+        description.quality = (numerator / (denominator + 1)) * sqrt(subgroup_rows / all_rows)
+    elif method == refine.Method.OUR_ENTROPY:
+        description.quality = (numerator / (denominator + 1)) * -((subgroup_rows/all_rows)*log10(subgroup_rows/all_rows))-((complement_rows/all_rows)*log10(complement_rows/all_rows))
 
 
 # compute distance between input vector and matrix given the specified distance function
@@ -66,7 +79,7 @@ def wouters_quality_measure(description: refine.Description, data: refine.DataSe
     # sqrt(s/n) The sqrt of the fraction of the dataset covered by s: Size<s>
     normalization_factor = sqrt(len(target_data)/len(data.dataframe))
     quality = 0
-    # Calculate quality based on method 
+    # Calculate quality based on method
     if method == refine.Method.NORM:
         quality = normalization_factor * np.linalg.norm(Ld)
     elif method == refine.Method.LABELWISE:
@@ -77,4 +90,3 @@ def wouters_quality_measure(description: refine.Description, data: refine.DataSe
         max_elem = Ld.max()
         quality = normalization_factor * max_elem
     description.quality = quality
-
