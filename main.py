@@ -9,19 +9,9 @@ import tqdm
 import data_refinement
 import beam_search
 
-# party votes columns
-parties_abs = ['VVD', 'D66', 'PVV (Partij voor de Vrijheid)', 'CDA', 'SP (Socialistische Partij)', 'Partij van de Arbeid (P.v.d.A.)', 'GROENLINKS', 'Forum voor Democratie', 'Partij voor de Dieren', 'ChristenUnie', 'Volt', 'JA21', 'Staatkundig Gereformeerde Partij (SGP)', 'DENK', '50PLUS', 'BBB', 'BIJ1', 'CODE ORANJE', 'NIDA', 'Splinter', 'Piratenpartij', 'JONG', 'Trots op Nederland (TROTS)', 'Lijst Henk Krol', 'NLBeter', 'Blanco (Zeven, A.J.L.B.)', 'LP (Libertaire Partij)', 'OPRECHT', 'JEZUS LEEFT', 'DE FEESTPARTIJ (DFP)', 'U-Buntu Connected Front', 'Vrij en Sociaal Nederland', 'Partij van de Eenheid', 'Wij zijn Nederland', 'Partij voor de Republiek', 'Modern Nederland', 'De Groenen']  # column names of the target attributes
-parties_rel = ['VVD (%)', 'D66 (%)', 'PVV (Partij voor de Vrijheid) (%)', 'CDA (%)', 'SP (Socialistische Partij) (%)', 'Partij van de Arbeid (P.v.d.A.) (%)', 'GROENLINKS (%)', 'Forum voor Democratie (%)', 'Partij voor de Dieren (%)', 'ChristenUnie (%)', 'Volt (%)', 'JA21 (%)', 'Staatkundig Gereformeerde Partij (SGP) (%)', 'DENK (%)', '50PLUS (%)', 'BBB (%)', 'BIJ1 (%)', 'CODE ORANJE (%)', 'NIDA (%)', 'Splinter (%)', 'Piratenpartij (%)', 'JONG (%)', 'Trots op Nederland (TROTS) (%)', 'Lijst Henk Krol (%)', 'NLBeter (%)', 'Blanco (Zeven, A.J.L.B.) (%)', 'LP (Libertaire Partij) (%)', 'OPRECHT (%)', 'JEZUS LEEFT (%)', 'DE FEESTPARTIJ (DFP) (%)', 'U-Buntu Connected Front (%)', 'Vrij en Sociaal Nederland (%)', 'Partij van de Eenheid (%)', 'Wij zijn Nederland (%)', 'Partij voor de Republiek (%)', 'Modern Nederland (%)', 'De Groenen (%)']  # column names of the target attributes
 
 # Synthetic dataset parameters
-PATH = "C:/Users/frank/Desktop/data_mining_election-main/data_mining_election-main1/data_mining_election-main/data/nrow500_ndescr32_ntarget2"  # file path to the datasets folder
-
-# Target, descriptors, or unwanted descriptor definition
-# If descriptors are empty, all attributes in the dataset, not in targets and not in unwanted_descriptors will be used
-# targets = []
-# descriptors = []
-# unwanted_descriptors = []
-# list(set().union(['RegioNaam', 'Region code', 'Kiesgerechtigden', 'Opkomst', 'OngeldigeStemmen', 'BlancoStemmen', 'GeldigeStemmen'], parties_abs))
+PATH = ""  # file path to the datasets folder and should and with /
 
 # Beam search parameters (all integers)
 w = 20  # None  # beam width
@@ -100,14 +90,14 @@ if __name__ == '__main__':
     if q is None:
         q = int(input("Enter the number of results to be returned (integer): "))
 
-    # tested_methods = [data_refinement.Method.OUR,data_refinement.Method.NORM,data_refinement.Method.LABELWISE,data_refinement.Method.PAIRWISE]
-    tested_methods = [data_refinement.Method.NORM]
+    selected_methods = [data_refinement.Method.OUR_N, data_refinement.Method.OUR_SQRT, data_refinement.Method.OUR_ENTROPY,
+                        data_refinement.Method.NORM, data_refinement.Method.LABELWISE, data_refinement.Method.PAIRWISE]
     output_files = [pd.DataFrame(columns=["Number of rows",
      "Number of descriptors", "Number of targets", 
-     "Average position", "Miss rate", "Duration"]) for _ in range(tested_methods[-1].value + 1)]
+     "Average position", "Miss rate", "Average Duration (s)"]) for _ in range(selected_methods[-1].value + 1)]
     for (root, dirs, files) in os.walk(PATH):
         if len(dirs) == 0:
-            for method in tested_methods:
+            for method in selected_methods:
                 folder_name = os.path.split(root)[-1]
                 print("\nStarting on", folder_name, f"\t Method: {data_refinement.Method(method).name}")
                 descriptors, targets = [], []
@@ -117,6 +107,7 @@ if __name__ == '__main__':
                 miss_rate_counter = 0  # counter of how many times subgroup is NOT in the top-q
                 start_time = time.time()
                 progress_bar = tqdm.tqdm(total=len(files))
+                acc_time = file_count = 0
                 
                 for file in files:
                     data = pd.read_csv(os.path.join(root, file), delimiter=",", index_col=0)
@@ -127,7 +118,13 @@ if __name__ == '__main__':
                             elif "party" in column:
                                 targets.append(column)
                     dataset = data_refinement.DataSet(data, targets, descriptors)
+                    b_start = time.time()
                     result = beam_search.beam_search(w, d, b, q, dataset, method)
+                    b_end = time.time()
+                    acc_time += (b_end - b_start)
+                    file_count += 1
+
+                    print_result(result)
 
                     value = process_result(result)
                     if value == -1:
@@ -145,14 +142,13 @@ if __name__ == '__main__':
                 else:
                     average_place = pd.NA
 
-                print("Analysis of", folder_name, " completed in %.0f seconds" % (end_time - start_time))
+                print("\nAnalysis of", folder_name, " completed in %.0f seconds" % (end_time - start_time))
                 print("Average place:", average_place, " - miss rate:", miss_rate_counter)
 
                 nrows = int(folder_name.split("_")[0][4:])
                 ndescr = int(folder_name.split("_")[1][6:])
                 ntarget = int(folder_name.split("_")[2][7:])
-                timeDuration = end_time - start_time
-                output_files[method.value].loc[len(output_files[method.value])] = [nrows, ndescr, ntarget, round(average_place, 5) if average_place is not pd.NA else pd.NA, miss_rate_counter, timeDuration]
+                output_files[method.value].loc[len(output_files[method.value])] = [nrows, ndescr, ntarget, round(average_place, 5) if average_place is not pd.NA else pd.NA, miss_rate_counter, round(acc_time / file_count, 2)]
                 output_files[method.value].to_csv("/".join(root.split("/")[0:len(root.split("/"))-1]) + f"/results_{data_refinement.Method(method).name}.csv", sep=",", index=False)
 
                 del data, dataset

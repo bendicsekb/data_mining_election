@@ -1,20 +1,14 @@
 import heapq
-import pandas as pd
 
 import data_refinement
 import quality_measure
 
 
-def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement.DataSet, method: data_refinement.Method):
+def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement.DataSet,
+                method: data_refinement.Method):
     candidate_queue = list()
     result_set = []
     unique_counter = int(2e32)  # really large number
-
-    # dataframe containing useful information on each description's quality, to be later outputted as csv
-    # Note that changes to for example the columns, will require changes in the quality_measure.py functions
-    pd.DataFrame(data=None, columns=["Description", "Quality", "Size of subgroup", "Size of complement", "Numerator",
-                                     "Denominator"])
-
     empty_description = data_refinement.Description()
     heapq.heappush(candidate_queue, (0, 0, empty_description))
 
@@ -27,9 +21,20 @@ def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement
             for desc in descriptions:
                 unique_counter -= 1
 
-                quality_data = quality_measure.set_quality(desc, data, method)
-                if quality_data is not None:
-                    quality_measure_data = quality_data
+                quality_measure.set_quality(desc, data, method)
+
+                unique = True
+                for result_tup in result_set:
+                    if data_refinement.check_unique_rule(desc, result_tup[2]):
+                        unique = False
+                        break
+                for beam_tup in beam:
+                    if not unique and data_refinement.check_unique_rule(desc, beam_tup[2]):
+                        unique = False
+                        break
+
+                if not unique:
+                    continue
 
                 # if the result set size is not yet q, simply push the description
                 # Note that the tuples consist of (quality, random number, description), because whenever there are two

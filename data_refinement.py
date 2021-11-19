@@ -7,6 +7,7 @@ from enum import Enum
 binary_operators = nominal_operators = ["==", "!="]
 numerical_operators = ["<=", ">="]
 
+
 # enumerate on the possible rule types
 class RuleType(Enum):
     UNKNOWN = 0
@@ -14,11 +15,14 @@ class RuleType(Enum):
     NOMINAL = 2
     NUMERICAL = 3
 
+
 class Method(Enum):
-    OUR = 0
-    NORM = 1
-    LABELWISE = 2
-    PAIRWISE = 3
+    OUR_N = 0
+    OUR_SQRT = 1
+    OUR_ENTROPY = 2
+    NORM = 3
+    LABELWISE = 4
+    PAIRWISE = 5
 
 
 # Given a rule type, return a list of operators for that rule type
@@ -42,6 +46,8 @@ Where   salary is the attribute
         3000 is the value
 Rules can be of type binary, nominal and numerical and their operators should be conform those types
 """
+
+
 class Rule:
     def __init__(self, rule_type: RuleType, attribute: str, operator: str, value):
         if rule_type.value is RuleType.UNKNOWN.value:
@@ -67,7 +73,7 @@ class Rule:
 # A description is a set of rules containing at least one rule with a quality assigned to it
 class Description:
     # def __init__(self, rules: list[Rule] = None, quality: float = 0.0):
-    def __init__(self, rules = None, quality: float = 0.0):
+    def __init__(self, rules=None, quality: float = 0.0):
         if rules is None:
             self.rules = []
         else:
@@ -103,7 +109,7 @@ class DataSet:
     # def __init__(self, data, targets: list[str], descriptors: list[str]):
     def __init__(self, data, targets, descriptors):
         self.dataframe = data
-        
+
         if len(targets) == 0:
             raise Exception("User has to specify the targets for a dataset")
         else:
@@ -129,10 +135,9 @@ class DataSet:
                 for jj in range(len(self.targets)):
                     lambda_i = trgts.iloc[ii]
                     lambda_j = trgts.iloc[jj]
-                    Mpis[i, ii,jj] = self.omega(lambda_i, lambda_j)
+                    Mpis[i, ii, jj] = self.omega(lambda_i, lambda_j)
 
-        self.MD = 1/ len(data) * np.sum(Mpis, axis=0)
-
+        self.MD = 1 / len(data) * np.sum(Mpis, axis=0)
 
     def omega(self, l, l_hat):
         retval = np.NaN
@@ -146,7 +151,7 @@ class DataSet:
 
     def set_descriptor_types(self):
         for desc in self.descriptors:
-            self.descriptor_types[desc] = RuleType.BINARY # RuleType.NUMERICAL  # TODO: improve
+            self.descriptor_types[desc] = RuleType.BINARY  # RuleType.NUMERICAL  # TODO: improve
 
     def get_descriptor_type(self, descriptor):
         return self.descriptor_types[descriptor]
@@ -197,19 +202,22 @@ def refine(seed: Description, data: DataSet, bins: int):
 
         elif attribute_type == RuleType.NUMERICAL:
             for operator in get_operators_per_type(attribute_type):  # new rule for every operator
-                if not check_duplicate_operator(operator, seed):
-                    binning_intervals = discretize(seed, attribute, data.dataframe, bins)  # define binning intervals
-                    for interval in binning_intervals:  # new rule for every bin
+                binning_intervals = discretize(seed, attribute, data.dataframe, bins)  # define binning intervals
+                for interval in binning_intervals:  # new rule for every bin
+                    if not check_duplicate_rule(attribute, operator, interval, seed):
                         new_rule = Rule(attribute_type, attribute, operator, interval)
 
                         # create new description and add to the existing list
                         # Note: somehow passing seed.rules as argument to Description() results in incorrect descriptions
                         new_desc = Description()
-                        for rule in seed.rules:
+                        new_desc.add_rule(new_rule)  # The rule is not already in the description,  so add id
+                        for rule in seed.rules:  # add the existing rules
                             new_desc.add_rule(rule)
-                        new_desc.add_rule(new_rule)
 
-                        descriptions.append(new_desc)
+                        # if this description has never been seen yet, add it
+                        if new_desc.to_string() not in data.descriptions_strings:
+                            data.descriptions_strings.add(new_desc.to_string())
+                            descriptions.append(new_desc)
 
     return descriptions
 
@@ -227,7 +235,7 @@ def discretize(description: Description, attribute: str, data: pd.DataFrame, bin
     if bins > n:  # check if there are more bins than rows
         bins = n
 
-    for i in range(1, bins+1):
+    for i in range(1, bins + 1):
         index = math.floor((n - 1) / i)
         value = subgroup_data.iloc[index]
         if value not in intervals:
@@ -246,11 +254,43 @@ def check_duplicate_attribute(attribute: str, description: Description):
     return False
 
 
-def check_duplicate_operator(operator: str, description: Description):
+def check_duplicate_operator(attribute: str, operator: str, description: Description):
     if len(description.rules) == 0:
         return False
     for rule in description.rules:
-        if operator == rule.operator:
+        if attribute == rule.attribute and operator == rule.operator:
             return True
     return False
+
+
+def check_duplicate_rule(attribute: str, operator: str, value, description: Description):
+    if len(description.rules) == 0:
+        return False
+    for rule in description.rules:
+        if attribute == rule.attribute and operator == rule.operator and value == rule.value:
+            return True
+    return False
+
+
+# Check whether for a new description is actually an extension of the target description, which didn't change the subgroup
+def check_unique_rule(desc_new: Description, desc_target: Description):
+    # If the qualities aren't the same, then
+    if desc_target.quality != desc_new.quality:
+        return False
+    elif len(desc_target.rules) > len(desc_new.rules):  # if the target has more rules,
+        return False
+
+    target_rules = [rule.to_string() for rule in desc_target.rules]
+
+    # count how often every rule of the new description is in the target description
+    count = 0
+    for rule in desc_new.rules:
+        if rule.to_string() in target_rules:
+            count += 1
+
+    # if all rules in the target occur in the new description and the quality is equal, return true
+    if count == len(target_rules):
+        return True
+    else:
+        return False
 
