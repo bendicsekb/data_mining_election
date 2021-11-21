@@ -138,6 +138,14 @@ class DataSet:
                     Mpis[i, ii, jj] = self.omega(lambda_i, lambda_j)
 
         self.MD = 1 / len(data) * np.sum(Mpis, axis=0)
+        self.rank = self.compute_avg_rank()
+
+
+    def compute_avg_rank(self):
+        target_data = self.dataframe[self.targets]
+        averages = target_data.mean()
+        return np.array([sorted(averages, reverse=True).index(x) + 1 for x in averages])  # Reversed for total votes, not reversed for ranking
+
 
     def omega(self, l, l_hat):
         retval = np.NaN

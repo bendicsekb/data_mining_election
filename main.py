@@ -124,8 +124,6 @@ if __name__ == '__main__':
                     acc_time += (b_end - b_start)
                     file_count += 1
 
-                    print_result(result)
-
                     value = process_result(result)
                     if value == -1:
                         miss_rate_counter += 1

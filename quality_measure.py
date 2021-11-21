@@ -31,21 +31,15 @@ def our_quality_measure(description: refine.Description, data: refine.DataSet, m
     d_x_y_sum = 0
     for i in range(subgroup_rows):
         sub_target_vector = subgroup_data[i]
-        #d_x_x_sum += compute_distance(sub_target_vector, subgroup_data, "EUCLIDEAN")
-        #d_x_y_sum += compute_distance(sub_target_vector, complement_data, "EUCLIDEAN")
-
-
-        # slow but correct implementation
-        #for j in range(subgroup_rows):
-        #    d_x_x_sum += np.linalg.norm(sub_target_vector - subgroup_data[j])
-        #for k in range(complement_rows):
-        #    d_x_y_sum += np.linalg.norm(sub_target_vector - complement_data[k])
 
         # faster method
         d_x_x_sum += np.sqrt(np.sum(((sub_target_vector - subgroup_data) ** 2), axis=1)).sum()
-        d_x_y_sum += np.sqrt(np.sum(((sub_target_vector - complement_data) ** 2), axis=1)).sum()
+        # d_x_y_sum += np.sqrt(np.sum(((sub_target_vector - complement_data) ** 2), axis=1)).sum()
+        d_x_y_sum += np.sqrt(
+            np.sum(((sub_target_vector - data.rank) ** 2)))  # same as np.linalg.norm(sub_target_vector - data.rank)
 
-    numerator = (1.0 / (subgroup_rows * complement_rows)) * d_x_y_sum
+    numerator = (1.0 / subgroup_rows) * d_x_y_sum
+    # numerator = (1.0 / (subgroup_rows * complement_rows)) * d_x_y_sum
     denominator = (1.0 / (subgroup_rows * (subgroup_rows - 1))) * d_x_x_sum
 
     if method == refine.Method.OUR_N:
@@ -53,7 +47,9 @@ def our_quality_measure(description: refine.Description, data: refine.DataSet, m
     elif method == refine.Method.OUR_SQRT:
         description.quality = (numerator / (denominator + 1)) * sqrt(subgroup_rows / all_rows)
     elif method == refine.Method.OUR_ENTROPY:
-        description.quality = (numerator / (denominator + 1)) * -((subgroup_rows/all_rows)*log10(subgroup_rows/all_rows))-((complement_rows/all_rows)*log10(complement_rows/all_rows))
+        description.quality = (numerator / (denominator + 1)) * (
+                    -((subgroup_rows / all_rows) * log10(subgroup_rows / all_rows)) - (
+                        (complement_rows / all_rows) * log10(complement_rows / all_rows)))
 
 
 # compute distance between input vector and matrix given the specified distance function
