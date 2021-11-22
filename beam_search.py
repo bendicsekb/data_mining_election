@@ -13,12 +13,16 @@ def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement
     heapq.heappush(candidate_queue, (0, 0, empty_description))
 
     for i in range(depth):
+        print(i)
         beam = []
 
         while len(candidate_queue) != 0:
             seed = candidate_queue.pop(0)[2]  # pop the (quality, description) tuple and keep only the description
             descriptions = data_refinement.refine(seed, data, bins)
+            #print('start calculating qm')
             for desc in descriptions:
+                
+                #print(desc.to_string())
                 unique_counter -= 1
 
                 quality_measure.set_quality(desc, data, method)

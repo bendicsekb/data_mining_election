@@ -23,6 +23,7 @@ class Method(Enum):
     NORM = 3
     LABELWISE = 4
     PAIRWISE = 5
+    OUR_NONE = 6
 
 
 # Given a rule type, return a list of operators for that rule type
@@ -139,6 +140,7 @@ class DataSet:
 
         self.MD = 1 / len(data) * np.sum(Mpis, axis=0)
         self.rank = self.compute_avg_rank()  # [x for x in range(1, 38)] for real world dataset
+        print(self.rank)
 
 
     def compute_avg_rank(self):
@@ -159,7 +161,7 @@ class DataSet:
 
     def set_descriptor_types(self):
         for desc in self.descriptors:
-            self.descriptor_types[desc] = RuleType.BINARY  # RuleType.NUMERICAL  # TODO: improve
+            self.descriptor_types[desc] = RuleType.NUMERICAL #RuleType.BINARY  # RuleType.NUMERICAL  # TODO: improve
 
     def get_descriptor_type(self, descriptor):
         return self.descriptor_types[descriptor]
@@ -210,10 +212,12 @@ def refine(seed: Description, data: DataSet, bins: int):
 
         elif attribute_type == RuleType.NUMERICAL:
             for operator in get_operators_per_type(attribute_type):  # new rule for every operator
+                #print(attribute)
                 binning_intervals = discretize(seed, attribute, data.dataframe, bins)  # define binning intervals
                 for interval in binning_intervals:  # new rule for every bin
                     if not check_duplicate_rule(attribute, operator, interval, seed):
                         new_rule = Rule(attribute_type, attribute, operator, interval)
+                        #print(new_rule.to_string())
 
                         # create new description and add to the existing list
                         # Note: somehow passing seed.rules as argument to Description() results in incorrect descriptions
@@ -243,9 +247,16 @@ def discretize(description: Description, attribute: str, data: pd.DataFrame, bin
     if bins > n:  # check if there are more bins than rows
         bins = n
 
-    for i in range(1, bins + 1):
-        index = math.floor((n - 1) / i)
-        value = subgroup_data.iloc[index]
+    #print(bins)
+    quantiles = np.linspace(0, 1, bins+1)[1:-1] # for bins=4 quantiles, this results in 0.25, 0.5, 0.75
+    #print(quantiles)
+    #for i in range(1, bins + 1):
+    for i in range(bins-1):
+        #print(i)
+        value = subgroup_data.quantile(quantiles[i], interpolation='linear')
+        #index = math.floor((n - 1) / i)
+        #value = subgroup_data.iloc[index]
+        #print(value)
         if value not in intervals:
             intervals.append(value)
 
