@@ -1,0 +1,52 @@
+Found subgroups
+50: Companies by type - trade, catering industry (%) <= 0.237455162625 and Migration background - Suriname (%) >= 0.8500000000000001 and Motorcycles (per 1000 inhabitants) <= 47.0 with quality 2.087804630370659
+49: Married (%) >= 54.824999999999996 and Migration background - Suriname (%) <= 0.4 and Privately owned cars (per 1000 inhabitants) <= 525.25 with quality 2.089225854426406
+48: Companies by type - trade, catering industry (%) <= 0.23806194975 and Companies by type - transport, information, comunication (%) >= 0.07533458574999999 and Dutch background (%) <= 83.85 with quality 2.089360471726231
+47: Companies by type - trade, catering industry (%) <= 0.23806194975 and Companies by type - transport, information, comunication (%) >= 0.07533458574999999 and Migration background - any (%) >= 16.15 with quality 2.089360471726231
+46: Companies by type - business services (%) <= 0.21991981849999998 and Married (%) >= 54.824999999999996 and Privately owned cars (per 1000 inhabitants) <= 530.75 with quality 2.089467967781772      
+45: Migration background - Maroccan (%) >= 0.6499999999999999 and Migration background - Suriname (%) >= 0.8500000000000001 and Total housing stock (nr.) >= 10818.875 with quality 2.089920508931015    
+44: 10-14 years old (%) >= 5.8 and 45-64 years old (%) <= 29.224999999999998 and Married (%) >= 54.824999999999996 with quality 2.0903538173147194
+43: Companies by type - trade, catering industry (%) <= 0.234727048 and Migration background - Suriname (%) >= 0.8500000000000001 and Total students (nr.) >= 3154.625 with quality 2.0905167888746736
+42: Companies by type - culture, recreation, other (%) <= 0.1583816335 and Migration background - Suriname (%) >= 0.8500000000000001 and Total students (nr.) >= 3154.625 with quality 2.0915839649844594
+41: Companies by type - industry, engery (%) >= 0.16923349075 and Married (%) >= 54.824999999999996 and Students - bbl (%) >= 0.081978602 with quality 2.091859338629994
+40: Companies by type - industry, engery (%) >= 0.18034499762500003 and Married (%) >= 54.824999999999996 and Married (%) >= 55.125 with quality 2.0922286251561726
+39: Companies by type - industry, engery (%) >= 0.18034499762500003 and Married (%) >= 54.824999999999996 and Unmarried (%) <= 31.475 with quality 2.0922286251561726
+38: Companies by type - transport, information, comunication (%) >= 0.07533458574999999 and Migration background - Suriname (%) >= 1.0 and Mopeds (per 1000 inhabitants) <= 89.0 with quality 2.0929879669048215
+37: Companies (nr.) >= 2225.0 and Companies by type - transport, information, comunication (%) >= 0.07533458574999999 and Migration background - Suriname (%) >= 0.6 with quality 2.093189278389919   
+36: 45-64 years old (%) <= 29.125 and Married (%) >= 54.824999999999996 and Students - bbl (%) >= 0.087848320125 with quality 2.093417778039679
+35: <5 years old (%) >= 4.6499999999999995 and Married (%) >= 54.824999999999996 and Students - bbl (%) >= 0.087848320125 with quality 2.093417778039679
+34: 20-24 years old (%) >= 5.2250000000000005 and 45-64 years old (%) <= 28.1875 and Married (%) >= 54.824999999999996 with quality 2.093503414134129
+33: 5-9 years old (%) >= 4.9 and Companies by type - transport, information, comunication (%) >= 0.0785865235 and Migration background - Maroccan (%) >= 0.8 with quality 2.093790387609596
+32: Cars (per 1000 inhabitants) <= 563.0 and Companies by type - business services (%) <= 0.21991981849999998 and Married (%) >= 54.824999999999996 with quality 2.097756536697404
+31: 45-64 years old (%) <= 29.224999999999998 and Married (%) >= 54.824999999999996 and Married (%) >= 56.1 with quality 2.0977758247316585
+30: 45-64 years old (%) <= 28.1875 and Married (%) >= 54.824999999999996 and Students - bbl (%) >= 0.089408811 with quality 2.0983450328842905
+29: Married (%) >= 54.824999999999996 and Privately owned cars (per 1000 inhabitants) <= 513.5 and Students - bbl (%) >= 0.087848320125 with quality 2.0983450328842905
+28: 45-64 years old (%) <= 28.15 and Married (%) >= 54.824999999999996 and Students - bbl (%) >= 0.087848320125 with quality 2.0983450328842905
+27: <5 years old (%) >= 5.15 and Married (%) >= 54.824999999999996 and Students - bbl (%) >= 0.087848320125 with quality 2.0983450328842905
+26: 45-64 years old (%) <= 28.1 and Companies by type - business services (%) <= 0.21991981849999998 and Married (%) >= 54.824999999999996 with quality 2.098824882876705
+25: Companies by type - culture, recreation, other (%) <= 0.144523115 and Migration background - Suriname (%) >= 0.8500000000000001 and Migration background - any non-western (%) >= 8.587499999999999 with quality 2.099585043752443
+24: Migration background - Suriname (%) >= 0.8500000000000001 and Pigs (nr.) <= 6161.5 and Total students (nr.) >= 3154.625 with quality 2.0996490827792784
+23: Companies by type - culture, recreation, other (%) <= 0.13815261 and Migration background - Maroccan (%) >= 0.8 and Migration background - Suriname (%) >= 0.9 with quality 2.100129044124168     
+22: Migration background - Maroccan (%) >= 0.7 and Migration background - Suriname (%) >= 0.8500000000000001 and Total students (nr.) >= 3154.625 with quality 2.1002180628493563
+21: Migration background - Suriname (%) >= 1.0 and Population density (people/km2) >= 716.0 and Students - hbo (%) <= 0.2523205565 with quality 2.100222689586879
+20: Companies by type - transport, information, comunication (%) >= 0.07533458574999999 and Migration background - Maroccan (%) >= 0.9 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.4 with quality 2.1005115325237176
+19: Companies by type - transport, information, comunication (%) >= 0.07533458574999999 and Migration background - Maroccan (%) >= 0.6 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.4 with quality 2.1007540975450594
+18: Companies by type - industry, engery (%) >= 0.15341679725000001 and Married (%) >= 54.824999999999996 and Married (%) >= 56.1125 with quality 2.100953830323482
+17: Companies by type - industry, engery (%) >= 0.18034499762500003 and Married (%) >= 54.824999999999996 and Students - bbl (%) >= 0.08722775975 with quality 2.101994338030992
+16: Cars (per 1000 inhabitants) <= 557.0 and Companies by type - industry, engery (%) >= 0.16923349075 and Married (%) >= 54.824999999999996 with quality 2.102906645914658
+15: Companies by type - industry, engery (%) >= 0.16923349075 and Green pressure (%) >= 39.5 and Married (%) >= 54.824999999999996 with quality 2.102906645914658
+14: Companies by type - transport, information, comunication (%) >= 0.07533458574999999 and Migration background - Maroccan (%) >= 0.7 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.4 with quality 2.1032538001265966
+13: Married (%) >= 54.824999999999996 and Migration background - Suriname (%) <= 0.5 and Privately owned cars (per 1000 inhabitants) <= 525.25 with quality 2.103799270134502
+12: Companies by type - industry, engery (%) >= 0.13070365125 and Cultivated land by type - green fodder crops (%) <= 6.4 and Migration background - Maroccan (%) >= 0.8 with quality 2.1042661142560486
+11: Companies by type - transport, information, comunication (%) >= 0.07533458574999999 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.4 and Pigs (nr.) <= 11836.5 with quality 2.104330972218099
+10: Married (%) >= 54.824999999999996 and Privately owned cars (per 1000 inhabitants) <= 525.25 and Students - bbl (%) >= 0.08714285699999999 with quality 2.1044753334422994
+9: Companies by type - industry, engery (%) >= 0.16923349075 and Married (%) >= 54.824999999999996 and Married (%) >= 55.6 with quality 2.106505260290644
+8: Companies by type - culture, recreation, other (%) <= 0.1415219325 and Companies by type - transport, information, comunication (%) >= 0.07533458574999999 and Dutch background (%) <= 83.85 with quality 2.109269685078397
+7: Companies by type - culture, recreation, other (%) <= 0.1415219325 and Companies by type - transport, information, comunication (%) >= 0.07533458574999999 and Migration background - any (%) >= 16.15 with quality 2.109269685078397
+6: Companies by type - culture, recreation, other (%) <= 0.1441179635 and Migration background - Suriname (%) >= 0.8500000000000001 and Motorcycles (per 1000 inhabitants) <= 47.0 with quality 2.1105950960569007
+5: Companies by type - transport, information, comunication (%) >= 0.07533458574999999 and Migration background - Suriname (%) >= 0.8 and Migration background - any non-western (%) >= 8.174999999999999 with quality 2.1114066336065744
+4: Companies by type - trade, catering industry (%) <= 0.23736659699999998 and Companies by type - transport, information, comunication (%) >= 0.07533458574999999 and Migration background - Maroccan (%) >= 0.7 with quality 2.112539066023822
+3: Migration background - Maroccan (%) >= 0.975 and Migration background - Suriname (%) >= 0.8500000000000001 and Students - hbo (%) <= 0.247180378375 with quality 2.1155439719339686
+2: 45-64 years old (%) <= 29.224999999999998 and Married (%) >= 54.824999999999996 and Married (%) >= 55.1 with quality 2.120908405885236
+1: Companies by type - culture, recreation, other (%) <= 0.1465034145 and Migration background - Suriname (%) >= 1.0 and Population density (people/km2) >= 716.0 with quality 2.124766280354193      
+Runtime 2589.05 sec

@@ -1,0 +1,52 @@
+Found subgroups
+50: Migration background - any non-western (%) >= 4.4 and Migration background - any non-western (%) >= 5.824999999999999 with quality 0.3420855186330661
+49: 65-79 years old (%) <= 18.087500000000002 and Companies by type - business services (%) >= 0.21161117125 and Migration background - any non-western (%) >= 4.4 with quality 0.3422062021912096       
+48: Migration background - Maroccan (%) >= 0.2 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 and Migration background - western (%) <= 14.287500000000001 with quality 0.3422120517767494
+47: Migration background - Maroccan (%) >= 0.2 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 and Owner-occupied houses (%) <= 70.7 with quality 0.34223132747472795
+46: 10-14 years old (%) >= 5.0125 and Companies by type - business services (%) >= 0.21161117125 and Migration background - any non-western (%) >= 4.4 with quality 0.3422528251636568
+45: 10-14 years old (%) >= 4.925000000000001 and Companies by type - transport, information, comunication (%) >= 0.060470555625 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.3422645172553817
+44: 65-79 years old (%) <= 18.0 and Migration background - any non-western (%) >= 4.625 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.34233274386268325
+43: Migration background - Maroccan (%) >= 0.2 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 and Migration background - remaining non-western (%) >= 3.0125 with quality 0.34233648607976724
+42: 65-79 years old (%) <= 18.025 and Migration background - any non-western (%) >= 4.4 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.3424119821452018
+41: 15-19 years old (%) >= 5.5 and Migration background - any non-western (%) >= 4.625 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.3425261120086892
+40: Companies by type - transport, information, comunication (%) >= 0.060470555625 and Companies by type - transport, information, comunication (%) >= 0.066130997875 and Migration background - any non-western (%) >= 4.4 with quality 0.34253912495429
+39: Companies by type - transport, information, comunication (%) >= 0.060470555625 and Green pressure (%) >= 33.849999999999994 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.3426046301040566
+38: Migration background - Maroccan (%) >= 0.2 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 and Rental houses (%) >= 29.2 with quality 0.34267940224011323
+37: Companies by type - transport, information, comunication (%) >= 0.060470555625 and Migration background - any non-western (%) >= 4.4 and Migration background - remaining non-western (%) >= 3.1 with quality 0.3426979445447795
+36: Companies by type - business services (%) >= 0.21161117125 and Households wh children (%) <= 33.8 and Migration background - any non-western (%) >= 4.4 with quality 0.3427691287069453
+35: Companies by type - transport, information, comunication (%) >= 0.060470555625 and Migration background - Maroccan (%) >= 0.3 and Migration background - any non-western (%) >= 4.4 with quality 0.342812982349632
+34: Companies by type - business services (%) >= 0.21161117125 and Migration background - Maroccan (%) >= 0.3 and Migration background - any non-western (%) >= 4.4 with quality 0.34282860270936466     
+33: Migration background - Suriname (%) >= 0.4, Migration background - any non-western (%) >= 4.625 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.34285967016268326
+32: Companies by type - transport, information, comunication (%) >= 0.062034980375 and Migration background - Maroccan (%) >= 0.2 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.34291327071121247
+31: Migration background - Maroccan (%) >= 0.3 and Migration background - any non-western (%) >= 4.625 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.342961327146796
+30: Migration background - Maroccan (%) >= 0.3 and Migration background - any non-western (%) >= 4.4 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.342961327146796  
+29: 5-9 years old (%) >= 4.7 and Companies by type - transport, information, comunication (%) >= 0.060470555625 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.3429618020717831
+28: Companies by type - transport, information, comunication (%) >= 0.060470555625 and Migration background - any non-western (%) >= 5.3 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.34296382184915275
+27: <5 years old (%) >= 4.2 and Migration background - Maroccan (%) >= 0.2 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.342973717399839
+26: 10-14 years old (%) >= 5.0 and Migration background - any non-western (%) >= 4.4 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.342977053830508
+25: Households wh children (%) <= 33.6 and Migration background - Maroccan (%) >= 0.2 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.34306773435809185
+24: 10-14 years old (%) >= 5.0 and Companies by type - transport, information, comunication (%) >= 0.060470555625 and Migration background - any non-western (%) >= 4.4 with quality 0.34308438411510755
+23: Companies by type - transport, information, comunication (%) >= 0.060470555625 and Green pressure (%) >= 34.0125 and Migration background - any non-western (%) >= 4.4 with quality 0.3431269175549732
+22: 5-9 years old (%) >= 4.7 and Migration background - any non-western (%) >= 4.4 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.3431475425368377
+21: Migration background - Maroccan (%) >= 0.2 and Migration background - Maroccan (%) >= 0.3 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.34320936064896646       
+20: Green pressure (%) >= 34.075 and Migration background - any non-western (%) >= 4.4 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.3432712324034837
+19: Companies by type - transport, information, comunication (%) >= 0.060470555625 and Migration background - any non-western (%) >= 4.4 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.34333555201236327
+18: 5-9 years old (%) >= 4.7 and Companies by type - transport, information, comunication (%) >= 0.060470555625 and Migration background - any non-western (%) >= 4.4 with quality 0.34341948959943963
+17: 15-19 years old (%) >= 5.5 and Migration background - Maroccan (%) >= 0.2 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.3434712809498372
+16: Companies by type - transport, information, comunication (%) >= 0.060470555625 and Migration background - Suriname (%) >= 0.4 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.34348298475403927
+15: 10-14 years old (%) >= 5.0 and Migration background - any non-western (%) >= 4.625 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.3436117051052666
+14: Companies by type - business services (%) >= 0.21161117125 and Green pressure (%) >= 34.150000000000006 and Migration background - any non-western (%) >= 4.4 with quality 0.34366333331549703       
+13: Migration background - any non-western (%) >= 4.4 and Migration background - any non-western (%) >= 5.4 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.3437110024778792
+12: Green pressure (%) >= 34.025 and Migration background - any non-western (%) >= 4.625 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.3437425651810895
+11: 5-9 years old (%) >= 4.7 and Migration background - any non-western (%) >= 4.625 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.3438604748761443
+10: 65-79 years old (%) <= 18.0 and Migration background - Maroccan (%) >= 0.2 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.34387731226289925
+9: Migration background - Maroccan (%) >= 0.2 and Migration background - Suriname (%) >= 0.4 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.3440877350854017
+8: Companies by type - transport, information, comunication (%) >= 0.060470555625 and Migration background - any non-western (%) >= 4.4 and Migration background - any non-western (%) >= 5.4 with quality 0.3441477987840953
+7: Companies by type - transport, information, comunication (%) >= 0.060470555625 and Migration background - Suriname (%) >= 0.4 and Migration background - any non-western (%) >= 4.4 with quality 0.3441651398051367
+6: 10-14 years old (%) >= 5.0 and Migration background - Maroccan (%) >= 0.2 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.34454226815978056
+5: Companies by type - business services (%) >= 0.21161117125 and Migration background - any non-western (%) >= 4.4 and Migration background - any non-western (%) >= 5.2 with quality 0.3446038325888009
+4: Companies by type - transport, information, comunication (%) >= 0.060470555625 and Migration background - Maroccan (%) >= 0.2 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.3446828058477671
+3: Migration background - Maroccan (%) >= 0.2 and Migration background - any non-western (%) >= 5.2 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.34471371997104117 
+2: 5-9 years old (%) >= 4.7 and Migration background - Maroccan (%) >= 0.2 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.34477649314893083
+1: Green pressure (%) >= 34.0125 and Migration background - Maroccan (%) >= 0.2 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.3 with quality 0.34508993756803064
+Runtime 556.93 sec

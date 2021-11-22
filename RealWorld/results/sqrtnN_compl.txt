@@ -1,0 +1,52 @@
+Found subgroups
+50: Dutch background (%) <= 91.9 and Migration background - Maroccan (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 1.0249317865428968
+49: Companies by type - business services (%) >= 0.18570068500000003 and Migration background - Suriname (%) >= 0.1 and Migration background - Turkey (%) >= 0.1 with quality 1.0249952863190248
+48: Migration background - Suriname (%) >= 0.1 and Migration background - Turkey (%) >= 0.1 and Migration background - western (%) >= 4.6 with quality 1.0250979202763673
+47: Migration background - Suriname (%) >= 0.1 and Migration background - Turkey (%) >= 0.1 and Other poultry (nr.) <= 0.0 with quality 1.0265944966029061
+46: Dutch background (%) <= 91.975 and Migration background - Suriname (%) >= 0.1 and Migration background - Turkey (%) >= 0.1 with quality 1.0270558999365191
+45: Migration background - Suriname (%) >= 0.1 and Migration background - Turkey (%) >= 0.1 and Migration background - any (%) >= 8.025 with quality 1.0270558999365191
+44: Migration background - Maroccan (%) >= 0.1 and Migration background - any non-western (%) >= 2.9 with quality 1.0272445779446084
+43: Migration background - Suriname (%) >= 0.1 and Migration background - Turkey (%) >= 0.1 and Migration background - any (%) >= 8.3 with quality 1.0276966449074654
+42: Dutch background (%) <= 91.7 and Migration background - Suriname (%) >= 0.1 and Migration background - Turkey (%) >= 0.1 with quality 1.0276966449074654
+41: Migration background - Turkey (%) >= 0.1 and Migration background - any (%) >= 8.275 with quality 1.0276966449074654
+40: Dutch background (%) <= 91.72500000000001 and Migration background - Turkey (%) >= 0.1 with quality 1.0276966449074654
+39: Companies by type - business services (%) >= 0.18615600087499998 and Migration background - Suriname (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 1.0278466526918444
+38: Migration background - Turkey (%) >= 0.1 and Migration background - western (%) >= 4.6 with quality 1.027872654130104
+37: Migration background - Turkey (%) >= 0.1 and Other poultry (nr.) <= 0.0 with quality 1.0296737153642672
+36: Migration background - Turkey (%) >= 0.1 and Migration background - any (%) >= 8.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 1.0298652329415234
+35: Dutch background (%) <= 91.9 and Migration background - Turkey (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 1.0298652329415234
+34: Migration background - Suriname (%) >= 0.1 and Migration background - western (%) >= 4.6 with quality 1.030282938089794
+33: Migration background - Maroccan (%) >= 0.1 and Migration background - Suriname (%) >= 0.1 with quality 1.0304909264147835
+32: Divorced (%) >= 6.75 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 1.0308156635207668
+31: Companies by type - business services (%) >= 0.18570068500000003 and Migration background - Suriname (%) >= 0.1 with quality 1.030943292124781
+30: Migration background - Turkey (%) >= 0.1 and Migration background - remaining non-western (%) >= 2.2 with quality 1.0315166198873689
+29: Companies by type - business services (%) >= 0.1853941095 and Migration background - Turkey (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 1.031693659679492
+28: Migration background - remaining non-western (%) >= 2.2 with quality 1.0332340140375498
+27: Migration background - Suriname (%) >= 0.1 and Migration background - any (%) >= 8.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 1.0350309564184148
+26: Dutch background (%) <= 91.9 and Migration background - Suriname (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 1.0350309564184148
+25: Migration background - Suriname (%) >= 0.1 and Migration background - any (%) >= 8.025 with quality 1.0350309564184148
+24: Dutch background (%) <= 91.975 and Migration background - Suriname (%) >= 0.1 with quality 1.0350309564184148
+23: Divorced (%) >= 6.7 and Migration background - Maroccan (%) >= 0.1 with quality 1.0350688488375606
+22: Dutch background (%) <= 92.0 and Migration background - Maroccan (%) >= 0.1 with quality 1.0359103976039226
+21: Migration background - Maroccan (%) >= 0.1 and Migration background - any (%) >= 8.0 with quality 1.0359103976039226
+20: Companies by type - business services (%) >= 0.18418062175000002 and Migration background - Turkey (%) >= 0.1 with quality 1.0379127142063165
+19: Companies by type - business services (%) >= 0.1853941095 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 1.0380486172192613
+18: Dutch background (%) <= 92.0 and Migration background - Turkey (%) >= 0.1 with quality 1.0412234174989892
+17: Migration background - Turkey (%) >= 0.1 and Migration background - any (%) >= 8.0 with quality 1.0412234174989892
+16: Migration background - Turkey (%) >= 0.1 and Migration background - any non-western (%) >= 3.0 with quality 1.0436470737463353
+15: Migration background - western (%) >= 4.6 with quality 1.0437795654230952
+14: Migration background - Maroccan (%) >= 0.1 with quality 1.0439225618123502
+13: Companies by type - business services (%) >= 0.18418062175000002 with quality 1.0446465031337708
+12: Migration background - Maroccan (%) >= 0.1 and Migration background - Turkey (%) >= 0.1 with quality 1.0458081975885836
+11: Divorced (%) >= 6.7 and Migration background - Turkey (%) >= 0.1 with quality 1.0471284114490285
+10: Migration background - any (%) >= 8.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 1.0485280761888724
+9: Dutch background (%) <= 91.9 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 1.0485280761888724
+8: Migration background - Suriname (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 1.0574715321471335
+7: Migration background - any non-western (%) >= 2.9 with quality 1.060304095277641
+6: Divorced (%) >= 6.7 with quality 1.060996122218206
+5: Migration background - any (%) >= 8.0 with quality 1.061597304450454
+4: Dutch background (%) <= 92.0 with quality 1.061597304450454
+3: Migration background - Suriname (%) >= 0.1 and Migration background - Turkey (%) >= 0.1 with quality 1.0986626089420175
+2: Migration background - Turkey (%) >= 0.1 with quality 1.1068033289752823
+1: Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 1.2228343598126399
+Runtime 835.63 sec

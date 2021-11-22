@@ -1,0 +1,52 @@
+Found subgroups
+50: Households wh children (%) >= 23.175 and Migration background - Suriname (%) >= 1.525 and Other poultry (nr.) <= 0.0 with quality 1.1802964695194915
+49: Cars (per 1000 inhabitants) >= 373.5 and Migration background - Suriname (%) >= 1.525 and Other poultry (nr.) <= 0.0 with quality 1.1802964695194915
+48: Migration background - Suriname (%) >= 1.525 and Other poultry (nr.) <= 0.0 and Privately owned cars (per 1000 inhabitants) >= 335.75 with quality 1.1802964695194915
+47: Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 and Migration background - remaining non-western (%) <= 9.100000000000001 with quality 1.1803806169566564
+46: <5 years old (%) <= 5.85 and Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 with quality 1.1806317599783893
+45: Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 and Migration background - western (%) >= 7.4 with quality 1.180635770099343
+44: Companies by type - trade, catering industry (%) <= 0.23121629 and Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 with quality 1.1809269377695377
+43: Companies by type - culture, recreation, other (%) <= 0.146077775125 and Ducks for slaughter (nr.) <= 0.0 and Migration background - Suriname (%) >= 1.525 with quality 1.1809583571449684        
+42: 45-64 years old (%) >= 24.8 and Migration background - Suriname (%) >= 1.525 and Turkeys (nr.) <= 0.0 with quality 1.1810531770512915
+41: 45-64 years old (%) >= 24.8 and Migration background - Suriname (%) >= 1.525 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.6 with quality 1.1813533776821359
+40: 20-24 years old (%) <= 5.8 and Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 with quality 1.1814345917122038
+39: Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 and Students - secondary education (%) >= 0.441857036 with quality 1.1814740692671253
+38: Companies (nr.) <= 18638.125 and Migration background - Suriname (%) >= 1.525 and Turkeys (nr.) <= 0.0 with quality 1.1815370046189437
+37: 45-64 years old (%) >= 26.55 and Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 with quality 1.1819875198622107
+36: Companies (nr.) <= 18638.125 and Migration background - Suriname (%) >= 1.525 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.6 with quality 1.1820852555174077
+35: Companies by type - agriculture, forestry, fishery (%) >= 0.00258882275 and Migration background - Suriname (%) >= 1.525 and Other poultry (nr.) <= 0.0 with quality 1.1822571966755866
+34: Green pressure (%) >= 37.2 and Migration background - any (%) <= 33.0 and Migration background - any non-western (%) >= 9.6 with quality 1.1827630665893023
+33: Dutch background (%) >= 67.0 and Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 with quality 1.1827630665893023
+32: Migration background - Suriname (%) >= 1.525 and Other poultry (nr.) <= 0.0 and Total area (km2) <= 214.5475 with quality 1.1829834572730638
+31: Migration background - Suriname (%) >= 1.525 and Total population (nr.) <= 216828.0 and Turkeys (nr.) <= 0.0 with quality 1.1833031685118316
+30: Migration background - Suriname (%) >= 1.525 and Total students (nr.) <= 31940.25 and Turkeys (nr.) <= 0.0 with quality 1.1833031685118316
+29: Migration background - Suriname (%) >= 1.525 and Total housing stock (nr.) <= 95002.625 and Turkeys (nr.) <= 0.0 with quality 1.1833031685118316
+28: Migration background - Suriname (%) >= 1.525 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.6 and Total population (nr.) <= 216828.0 with quality 1.1835052022209462
+27: Migration background - Suriname (%) >= 1.525 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.6 and Total students (nr.) <= 31940.25 with quality 1.1835052022209462
+26: Migration background - Suriname (%) >= 1.525 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.6 and Total housing stock (nr.) <= 95002.625 with quality 1.1835052022209462
+25: 45-64 years old (%) >= 24.8 and Migration background - Suriname (%) >= 1.525 and Other poultry (nr.) <= 0.0 with quality 1.1836353736155183
+24: Cultivated land by type - horticulture, open ground (%) >= 0.05 and Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 with quality 1.1837608041097814
+23: Companies (nr.) <= 18638.125 and Migration background - Suriname (%) >= 1.525 and Other poultry (nr.) <= 0.0 with quality 1.1838930536391634
+22: Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 and Motorcycles (per 1000 inhabitants) >= 32.0 with quality 1.1844655222676532
+21: Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 and Pigs (nr.) <= 20739.0 with quality 1.1846591519321428
+20: Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 and Students - university (%) >= 0.0619096835 with quality 1.1847374653825034
+19: Migration background - Suriname (%) >= 1.525 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.6 and Total road length (km) <= 1073.875 with quality 1.184769339830872
+18: Migration background - Suriname (%) >= 1.525 and Total road length (km) <= 1073.875 and Turkeys (nr.) <= 0.0 with quality 1.1849737177976296
+17: 25-44 years old (%) <= 29.725 and Migration background - Suriname (%) >= 1.525 and Turkeys (nr.) <= 0.0 with quality 1.1853584430317503
+16: Companies by type - financial services, real-estate (%) <= 0.13328359 and Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 with quality 1.185428810609126
+15: Companies by type - culture, recreation, other (%) <= 0.146077775125 and Migration background - Suriname (%) >= 1.525 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.6 with quality 1.1855017071869953
+14: 25-44 years old (%) <= 29.725 and Migration background - Suriname (%) >= 1.525 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.6 with quality 1.1858401389518805
+13: Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 and Total students (nr.) >= 3496.0 with quality 1.1861366186332176
+12: Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 and Total housing stock (nr.) >= 12376.0 with quality 1.1861366186332176
+11: Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 and Total population (nr.) >= 28005.5 with quality 1.1861366186332176
+10: Companies by type - culture, recreation, other (%) <= 0.146077775125 and Migration background - Suriname (%) >= 1.525 and Turkeys (nr.) <= 0.0 with quality 1.186267812890706
+9: Companies by type - transport, information, comunication (%) >= 0.08205881749999999 and Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 with quality 1.1866099325342696
+8: Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 and Widowed (%) <= 6.8 with quality 1.1871662970805597
+7: Companies by type - business services (%) >= 0.2412253695 and Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 with quality 1.1877118319830098
+6: 25-44 years old (%) <= 29.725 and Migration background - Suriname (%) >= 1.525 and Other poultry (nr.) <= 0.0 with quality 1.1878504214569325
+5: Cultivated land by type - permanent grassland (%) <= 86.69999999999999 and Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 with quality 1.1892928588942469
+4: Green pressure (%) >= 37.2 and Migration background - any non-western (%) >= 9.6 and Unmarried (%) >= 32.55 with quality 1.1905436986687359
+3: Green pressure (%) >= 37.2 and Migration background - Maroccan (%) >= 1.0 and Migration background - any non-western (%) >= 9.6 with quality 1.1988814349055903
+2: Green pressure (%) >= 37.2 and Migration background - Suriname (%) >= 0.8 and Migration background - any non-western (%) >= 9.6 with quality 1.199755616689283
+1: Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 1.2263331777210045
+Runtime 415.59 sec

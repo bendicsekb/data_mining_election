@@ -1,0 +1,52 @@
+Found subgroups
+50: 5-9 years old (%) <= 5.0 and Migration background - Turkey (%) <= 0.1 and Unmarried (%) >= 29.0 with quality 0.7668502548035753
+49: Cultivated land by type - permanent grassland (%) <= 35.0 and Migration background - Suriname (%) <= 0.2 and Students - university (%) >= 0.051272179 with quality 0.76685704894048
+48: 5-9 years old (%) <= 5.0 and Average household size (people/household) >= 2.09 and Migration background - Turkey (%) <= 0.1 with quality 0.7668988376254344
+47: 5-9 years old (%) <= 5.0 and Households w children (%) >= 29.4 and Migration background - Turkey (%) <= 0.1 with quality 0.7668988376254344
+46: 5-9 years old (%) <= 5.0 and Migration background - Turkey (%) <= 0.1 and Single person households (%) <= 37.2 with quality 0.7668988376254344
+45: Cars (per 1000 inhabitants) >= 543.0 and Migration background - Turkey (%) <= 0.1 and Mopeds (per 1000 inhabitants) >= 64.75 with quality 0.7669849348015654
+44: Migration background - Turkey (%) <= 0.1 and Mopeds (per 1000 inhabitants) >= 65.0 and Privately owned cars (per 1000 inhabitants) >= 524.75 with quality 0.7669849348015654
+43: 65-79 years old (%) <= 19.55 and Cars (per 1000 inhabitants) >= 543.0 and Migration background - Turkey (%) <= 0.1 with quality 0.7670321083602306
+42: Cultivated land by type - temporary grassland (%) >= 5.95 and Mopeds (per 1000 inhabitants) >= 64.0 and Privately owned cars (per 1000 inhabitants) >= 551.0 with quality 0.7670598036438813
+41: Cars (per 1000 inhabitants) >= 543.0 and Migration background - Turkey (%) <= 0.1 and Motorcycles (per 1000 inhabitants) >= 51.75 with quality 0.7673020339305973
+40: Cars (per 1000 inhabitants) >= 543.0 and Cultivated land by type - horticulture, open ground (%) >= 1.05 and Migration background - Turkey (%) <= 0.1 with quality 0.7675507202744375
+39: 5-9 years old (%) <= 5.0 and Divorced (%) <= 9.6 and Migration background - Turkey (%) <= 0.1 with quality 0.7675639932424042
+38: Migration background - Turkey (%) <= 0.1 and Migration background - any non-western (%) <= 3.525 and Privately owned cars (per 1000 inhabitants) >= 524.75 with quality 0.7675837326894469
+37: Cultivated land by type - permanent grassland (%) <= 35.0 and Migration background - Suriname (%) <= 0.2 and Students - university (%) >= 0.039256242125 with quality 0.7677579226117378
+36: Cars (per 1000 inhabitants) >= 543.0 and Migration background - Turkey (%) <= 0.1 and Total population (nr.) <= 25647.75 with quality 0.7678086647783352
+35: 5-9 years old (%) <= 5.0 and Migration background - Turkey (%) <= 0.1 and Students - hbo (%) <= 0.232594937 with quality 0.7678671522070801
+34: 5-9 years old (%) <= 5.0 and Companies by type - industry, engery (%) >= 0.141955836 and Migration background - Turkey (%) <= 0.1 with quality 0.7678685629755188
+33: 25-44 years old (%) >= 18.9 and Migration background - Turkey (%) <= 0.1 and Privately owned cars (per 1000 inhabitants) >= 524.75 with quality 0.7678792859207294
+32: <5 years old (%) >= 3.9 and Cultivated land by type - permanent grassland (%) <= 35.0 and Migration background - Suriname (%) <= 0.2 with quality 0.7678925424680806
+31: Cars (per 1000 inhabitants) >= 543.0 and Districts (nr.) <= 11.5 and Migration background - Turkey (%) <= 0.1 with quality 0.7679012389075998
+30: Migration background - Turkey (%) <= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.2 and Privately owned cars (per 1000 inhabitants) >= 524.75 with quality 0.7679130352311061
+29: Cars (per 1000 inhabitants) >= 543.0 and Divorced (%) <= 8.55 and Migration background - Turkey (%) <= 0.1 with quality 0.7679439116669843
+28: 5-9 years old (%) <= 5.0 and Cultivated land by type - horticulture, open ground (%) >= 0.6 and Migration background - Turkey (%) <= 0.1 with quality 0.7682325671893144
+27: Migration background - Turkey (%) <= 0.1 and Migration background - western (%) >= 4.3 and Privately owned cars (per 1000 inhabitants) >= 524.75 with quality 0.7683178376061581
+26: 20-24 years old (%) >= 4.7749999999999995 and Cars (per 1000 inhabitants) >= 543.0 and Migration background - Turkey (%) <= 0.1 with quality 0.7683327081552582
+25: 5-9 years old (%) <= 5.0 and Cultivated land by type - temporary grassland (%) >= 6.5 and Migration background - Turkey (%) <= 0.1 with quality 0.7683626916505959
+24: Migration background - Turkey (%) <= 0.1 and Privately owned cars (per 1000 inhabitants) >= 524.75 and Widowed (%) <= 7.5 with quality 0.7684779635738528
+23: Companies by type - industry, engery (%) >= 0.13573559899999998 and Cultivated land by type - horticulture, open ground (%) <= 12.5 and Privately owned cars (per 1000 inhabitants) >= 551.0 with quality 0.7687658987961031
+22: 5-9 years old (%) <= 5.0 and Migration background - Turkey (%) <= 0.1 and Mopeds (per 1000 inhabitants) <= 108.0 with quality 0.7688819029140521
+21: Companies by type - industry, engery (%) >= 0.155408057 and Cultivated land by type - permanent grassland (%) <= 35.0 and Migration background - Suriname (%) <= 0.2 with quality 0.768925092815163
+20: 5-9 years old (%) <= 5.0 and Migration background - Turkey (%) <= 0.1 and Students - bbl (%) >= 0.058558559 with quality 0.7691473023513479
+19: 5-9 years old (%) <= 5.0 and Housing density (houses/km2) >= 41.0 and Migration background - Turkey (%) <= 0.1 with quality 0.769256526979936
+18: Cultivated land by type - permanent grassland (%) <= 35.0 and Migration background - Suriname (%) <= 0.2 and Total area (km2) <= 151.8475 with quality 0.7693885390042436
+17: Cars (per 1000 inhabitants) >= 543.0 and Companies by type - industry, engery (%) >= 0.15854440175 and Migration background - Turkey (%) <= 0.1 with quality 0.7695368452785242
+16: 10-14 years old (%) >= 4.6 and Cars (per 1000 inhabitants) >= 555.0 and Migration background - Turkey (%) <= 0.1 with quality 0.7695559113775149
+15: Cultivated land by type - permanent grassland (%) <= 35.0 and Horses (nr.) >= 128.25 and Migration background - Suriname (%) <= 0.2 with quality 0.7698146480394831
+14: Cars (per 1000 inhabitants) >= 543.0 and Companies by type - trade, catering industry (%) <= 0.2171452505 and Migration background - Turkey (%) <= 0.1 with quality 0.7699586902119824
+13: Cars (per 1000 inhabitants) >= 543.0 and Migration background - Turkey (%) <= 0.1 and Migration background - any non-western (%) <= 3.3 with quality 0.7699765652215231
+12: Cultivated land by type - permanent grassland (%) <= 35.0 and Migration background - Suriname (%) <= 0.2 and Students - hbo (%) >= 0.19653658924999998 with quality 0.7700687850931649
+11: 5-9 years old (%) <= 5.0 and Migration background - Turkey (%) <= 0.1 and Students - university (%) >= 0.038529516 with quality 0.7702233467118788
+10: 80+ years old  (%) <= 6.3 and Cars (per 1000 inhabitants) >= 543.0 and Migration background - Turkey (%) <= 0.1 with quality 0.7703359766137681
+9: 5-9 years old (%) <= 5.0 and Migration background - Turkey (%) <= 0.1 and Mopeds (per 1000 inhabitants) >= 63.0 with quality 0.7703499251752507
+8: 5-9 years old (%) <= 5.0 and Migration background - Turkey (%) <= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.3 with quality 0.7704449121739724
+7: 10-14 years old (%) >= 4.6 and 5-9 years old (%) <= 5.0 and Migration background - Turkey (%) <= 0.1 with quality 0.7706987041272492
+6: Cars (per 1000 inhabitants) >= 543.0 and Migration background - Turkey (%) <= 0.1 and Students - university (%) >= 0.042847277249999996 with quality 0.7707443559054779
+5: Cars (per 1000 inhabitants) >= 543.0 and Migration background - Turkey (%) <= 0.1 and Total demographic pressure (%) <= 82.42500000000001 with quality 0.7711539401163648
+4: Migration background - Turkey (%) <= 0.1 and Privately owned cars (per 1000 inhabitants) >= 524.75 and Total demographic pressure (%) <= 82.4 with quality 0.7711539401163648
+3: Migration background - Turkey (%) <= 0.1 and Migration background - any non-western (%) <= 3.3 and Privately owned cars (per 1000 inhabitants) >= 524.75 with quality 0.7722903998210251
+2: Cars (per 1000 inhabitants) >= 543.0 and Grey pressure (%) <= 47.525000000000006 and Migration background - Turkey (%) <= 0.1 with quality 0.7725055826444761
+1: 80+ years old  (%) <= 6.3 and Migration background - Turkey (%) <= 0.1 and Privately owned cars (per 1000 inhabitants) >= 524.75 with quality 0.772680505282766
+Runtime 240.05 sec

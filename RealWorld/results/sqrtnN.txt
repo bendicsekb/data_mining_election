@@ -1,0 +1,52 @@
+Found subgroups
+50: Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 and Other poultry (nr.) <= 0.0 and Turkeys (nr.) <= 0.0 with quality 0.6578623583259503
+49: House ownership unknown (%) >= 0.1 and Migration background - Suriname (%) >= 0.1 and Migration background - Turkey (%) >= 0.1 with quality 0.6579154371212619
+48: House ownership unknown (%) >= 0.1 and Migration background - Suriname (%) >= 0.1 and Other poultry (nr.) <= 0.0 with quality 0.6579895117343343
+47: Cultivated land by type - agriculture (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.6580169516671052
+46: 10-14 years old (%) <= 6.4 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.6580404234250243
+45: Ducks for slaughter (nr.) <= 0.0 and Other poultry (nr.) <= 0.0 with quality 0.6585819078344046
+44: Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 and Rabbits (nr.) <= 0.0 with quality 0.6586654423681946
+43: Divorced (%) <= 10.7 with quality 0.6588046337033591
+42: Cultivated land by type - horticulture, open ground (%) >= 0.1 and Migration background - Suriname (%) >= 0.1 with quality 0.6589119660220208
+41: House ownership unknown (%) >= 0.1 and Migration background - Turkey (%) >= 0.1 with quality 0.6589928406721396
+40: 10-14 years old (%) <= 6.4 with quality 0.6591693741467
+39: 5-9 years old (%) <= 6.1 and Migration background - Suriname (%) >= 0.1 with quality 0.6595824977652907
+38: Cultivated land by type - horticulture, open ground (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.6599988187580388
+37: Other poultry (nr.) <= 0.0 and Turkeys (nr.) <= 0.0 with quality 0.6600507990021591
+36: House ownership unknown (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 and Other poultry (nr.) <= 0.0 with quality 0.6601992139133545
+35: Cultivated land by type - agriculture (%) >= 0.1 with quality 0.6602498775855591
+34: Rabbits (nr.) <= 0.0 with quality 0.6608155447806243
+33: Cultivated land by type - horticulture, open ground (%) >= 0.1 with quality 0.6622057775998034
+32: House ownership unknown (%) >= 0.1 and Other poultry (nr.) <= 0.0 with quality 0.6624006992117405
+31: 5-9 years old (%) <= 6.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.6628565431580777
+30: Districts (nr.) >= 2.0 and Migration background - Suriname (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.6631754115089052
+29: Ducks for slaughter (nr.) <= 0.0 and Migration background - Suriname (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.6637083741347818
+28: 5-9 years old (%) <= 6.1 with quality 0.6639849888014954
+27: Districts (nr.) >= 2.0 and Migration background - Suriname (%) >= 0.1 with quality 0.664222072052928
+26: Districts (nr.) >= 2.0 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.664226225577772
+25: Ducks for slaughter (nr.) <= 0.0 and Migration background - Suriname (%) >= 0.1 with quality 0.6647634983574651
+24: Migration background - Suriname (%) >= 0.1 and Migration background - Turkey (%) >= 0.1 and Other poultry (nr.) <= 0.0 with quality 0.6655445690518687
+23: Migration background - Suriname (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 and Turkeys (nr.) <= 0.0 with quality 0.6662355749334227
+22: Migration background - Maroccan (%) >= 0.1 and Migration background - Suriname (%) >= 0.1 with quality 0.6662893981832102
+21: Districts (nr.) >= 2.0 with quality 0.6664021749398564
+20: Migration background - Turkey (%) >= 0.1 and Other poultry (nr.) <= 0.0 with quality 0.6666052017845071
+19: Ducks for slaughter (nr.) <= 0.0 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.6669598232168178
+18: Migration background - Suriname (%) >= 0.1 and Turkeys (nr.) <= 0.0 with quality 0.6672805776645336
+17: Migration background - Maroccan (%) >= 0.1 with quality 0.6684398206841065
+16: Ducks for slaughter (nr.) <= 0.0 with quality 0.66911937282769
+15: Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 and Turkeys (nr.) <= 0.0 with quality 0.6694566524081831
+14: House ownership unknown (%) >= 0.1 and Migration background - Suriname (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.6696985357808757
+13: House ownership unknown (%) >= 0.1 and Migration background - Suriname (%) >= 0.1 with quality 0.670753877823364
+12: Turkeys (nr.) <= 0.0 with quality 0.6716193492119302
+11: House ownership unknown (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.6729168878513484
+10: House ownership unknown (%) >= 0.1 with quality 0.6750866520272337
+9: Migration background - Suriname (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 and Other poultry (nr.) <= 0.0 with quality 0.6771130541903494
+8: Migration background - Suriname (%) >= 0.1 and Other poultry (nr.) <= 0.0 with quality 0.6781449023865556
+7: Migration background - Suriname (%) >= 0.1 and Migration background - Turkey (%) >= 0.1 with quality 0.6781821259533043
+6: Migration background - Turkey (%) >= 0.1 with quality 0.679222205379527
+5: Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 and Other poultry (nr.) <= 0.0 with quality 0.6802891536646322
+4: Other poultry (nr.) <= 0.0 with quality 0.6824120039455429
+3: Migration background - Suriname (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.6895343160302336
+2: Migration background - Suriname (%) >= 0.1 with quality 0.6905518525186889
+1: Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.6926532540231187
+Runtime 639.38 sec

@@ -1,0 +1,52 @@
+Found subgroups
+50: Average household size (people/household) >= 2.4125 and Average household size (people/household) >= 2.49 and Students - university (%) <= 0.05150235375000001 with quality 0.0939498947415871       
+49: 10-14 years old (%) >= 6.4 and Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.05150235375000001 with quality 0.0939498947415871
+48: Green pressure (%) >= 43.824999999999996 and House ownership unknown (%) >= 0.2 and Students - bbl (%) >= 0.09162265425 with quality 0.0939498947415871
+47: Companies by type - business services (%) <= 0.20945937912499998 and Green pressure (%) >= 43.824999999999996 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.2 with quality 0.0939498947415871
+46: 45-64 years old (%) <= 26.95 and Green pressure (%) >= 43.824999999999996 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.2 with quality 0.0939498947415871
+45: <5 years old (%) >= 5.8125 and Green pressure (%) >= 43.824999999999996 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.2 with quality 0.0939498947415871
+44: Average household size (people/household) >= 2.4125 and Green pressure (%) >= 43.8 and Students - university (%) <= 0.056029701 with quality 0.09402254983772391
+43: Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.056029701 and Widowed (%) <= 6.6 with quality 0.09402254983772393
+42: Average household size (people/household) >= 2.4125 and Students - hbo (%) <= 0.19945987699999998 and Students - university (%) <= 0.05150235375000001 with quality 0.0941287127957779
+41: Average household size (people/household) >= 2.4125 and House ownership unknown (%) >= 0.2 and Students - university (%) <= 0.05150235375000001 with quality 0.0941287127957779
+40: Average household size (people/household) >= 2.4125 and Households wh children (%) <= 33.4 and Students - university (%) <= 0.05150235375000001 with quality 0.0941287127957779
+39: Average household size (people/household) >= 2.4125 and Grey pressure (%) <= 37.5 and Students - university (%) <= 0.05150235375000001 with quality 0.0941287127957779
+38: 80+ years old  (%) <= 5.2 and Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.05150235375000001 with quality 0.0941287127957779
+37: 65-79 years old (%) <= 15.2 and Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.05150235375000001 with quality 0.0941287127957779
+36: 25-44 years old (%) >= 22.0 and Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.05150235375000001 with quality 0.0941287127957779
+35: Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.05150235375000001 and Women (%) <= 0.504254784 with quality 0.0941287127957779
+34: Average household size (people/household) >= 2.4125 and Men (%) >= 0.495745216 and Students - university (%) <= 0.05150235375000001 with quality 0.0941287127957779
+33: 20-24 years old (%) >= 6.0874999999999995 and Average household size (people/household) >= 2.4125 and Companies (nr.) >= 1820.0 with quality 0.09470201471512854
+32: 20-24 years old (%) >= 6.0874999999999995 and Average household size (people/household) >= 2.4125 and Total students (nr.) >= 2311.0 with quality 0.09470201471512854
+31: 20-24 years old (%) >= 6.0874999999999995 and Average household size (people/household) >= 2.4125 and Total housing stock (nr.) >= 5933.0 with quality 0.09470201471512854
+30: 20-24 years old (%) >= 6.0874999999999995 and Average household size (people/household) >= 2.4125 and Total population (nr.) >= 17145.0 with quality 0.09470201471512854
+29: Average household size (people/household) >= 2.4125 and Privately owned cars (per 1000 inhabitants) <= 511.25 and Students - university (%) <= 0.056029701 with quality 0.09513998122169404
+28: Green pressure (%) >= 43.824999999999996 and Grey pressure (%) <= 34.0 and Students - bbl (%) >= 0.09162265425 with quality 0.09544834239157297
+27: Average household size (people/household) >= 2.4125 and Privately owned cars (per 1000 inhabitants) <= 487.0 and Students - university (%) <= 0.05150235375000001 with quality 0.09544834239157299   
+26: 45-64 years old (%) <= 27.325 and Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.056029701 with quality 0.09553358868117143
+25: Average household size (people/household) >= 2.4125 and Green pressure (%) >= 47.31249999999999 and Students - university (%) <= 0.056029701 with quality 0.09558105173743556
+24: 10-14 years old (%) >= 6.7 and Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.056029701 with quality 0.09561020488865216
+23: <5 years old (%) >= 5.7 and Average household size (people/household) >= 2.4125 and Students - bbl (%) >= 0.097358535375 with quality 0.09598523286626598
+22: Average household size (people/household) >= 2.4125 and Privately owned cars (per 1000 inhabitants) <= 488.0 and Students - university (%) <= 0.056029701 with quality 0.09598523286626598
+21: <5 years old (%) >= 5.8 and Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.05150235375000001 with quality 0.095985232866266
+20: 10-14 years old (%) >= 6.5 and Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.056029701 with quality 0.0965179512055928
+19: <5 years old (%) >= 5.6 and Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.05150235375000001 with quality 0.09716932355781926
+18: 5-9 years old (%) >= 5.925000000000001 and Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.056029701 with quality 0.09736398335787581
+17: <5 years old (%) >= 5.2250000000000005 and Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.056029701 with quality 0.09736398335787581
+16: Average household size (people/household) >= 2.4125 and Grey pressure (%) <= 34.912499999999994 and Students - university (%) <= 0.056029701 with quality 0.09791114697289874
+15: 20-24 years old (%) >= 5.9875 and Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.056029701 with quality 0.09791114697289874
+14: 65-79 years old (%) <= 13.8 and Green pressure (%) >= 43.824999999999996 and Students - bbl (%) >= 0.09162265425 with quality 0.09841367857314869
+13: 45-64 years old (%) <= 25.9 and Average household size (people/household) >= 2.4125 and Neighbourhoods (nr.) >= 3.25 with quality 0.09841367857314869
+12: 45-64 years old (%) <= 25.9 and Average household size (people/household) >= 2.4125 and Total area (km2) >= 18.72 with quality 0.09841367857314869
+11: 45-64 years old (%) <= 25.9 and Average household size (people/household) >= 2.4125 and Total road length (km) >= 78.0 with quality 0.09841367857314869
+10: 45-64 years old (%) <= 25.9 and Average household size (people/household) >= 2.4125 and Companies (nr.) >= 1208.75 with quality 0.09841367857314869
+9: 45-64 years old (%) <= 25.9 and Average household size (people/household) >= 2.4125 and Students - hbo (%) <= 0.20200782650000002 with quality 0.09841367857314869
+8: 45-64 years old (%) <= 25.9 and Average household size (people/household) >= 2.4125 and Total students (nr.) >= 1471.75 with quality 0.09841367857314869
+7: 45-64 years old (%) <= 25.9 and Average household size (people/household) >= 2.4125 and Total housing stock (nr.) >= 4484.75 with quality 0.09841367857314869
+6: 10-14 years old (%) >= 6.7 and 45-64 years old (%) <= 25.9 and Average household size (people/household) >= 2.4125 with quality 0.09841367857314869
+5: 10-14 years old (%) >= 6.55 and 45-64 years old (%) <= 25.9 and Average household size (people/household) >= 2.4125 with quality 0.09841367857314869
+4: 45-64 years old (%) <= 25.9 and Average household size (people/household) >= 2.4125 and Total population (nr.) >= 11696.25 with quality 0.09841367857314869
+3: 20-24 years old (%) >= 6.0 and Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.05150235375000001 with quality 0.09866748036396192
+2: Companies by type - business services (%) <= 0.20879120899999998 and Green pressure (%) >= 43.824999999999996 and Students - bbl (%) >= 0.09162265425 with quality 0.09866748036396192
+1: <5 years old (%) >= 5.6875 and Average household size (people/household) >= 2.4125 and Students - university (%) <= 0.056029701 with quality 0.10266626355635333
+Runtime 2309.89 sec

@@ -1,0 +1,52 @@
+Found subgroups
+50: Districts (nr.) >= 2.0 and Migration background - Suriname (%) >= 0.1 and Migration background - remaining non-western (%) <= 3.3 with quality 0.21516905387409496
+49: House ownership unknown (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 and Migration background - remaining non-western (%) <= 3.3 with quality 0.21517389444784102  
+48: Migration background - Maroccan (%) <= 0.5 and Migration background - Suriname (%) <= 0.6 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.21517545072812658       
+47: House ownership unknown (%) >= 0.1 and Migration background - Suriname (%) >= 0.1 and Migration background - remaining non-western (%) <= 3.3 with quality 0.21519134738382437
+46: House ownership unknown (%) >= 0.1 and Migration background - any non-western (%) <= 5.5 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.21521497786939403        
+45: Companies by type - transport, information, comunication (%) <= 0.069908815 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.21521598765452554
+44: Migration background - Suriname (%) <= 0.5 and Migration background - any non-western (%) <= 5.5 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.21522401968707094
+43: Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 and Migration background - remaining non-western (%) <= 3.3 with quality 0.2152256223400807
+42: Migration background - remaining non-western (%) <= 3.3 and Mopeds (per 1000 inhabitants) >= 59.0 with quality 0.21523670713358864
+41: Companies by type - agriculture, forestry, fishery (%) >= 0.051383399 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.4 with quality 0.21524291196706524
+40: Migration background - Turkey (%) <= 1.0 and Migration background - remaining non-western (%) <= 3.3 with quality 0.2152435248475527
+39: Companies by type - transport, information, comunication (%) <= 0.069908815 and Migration background - Suriname (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.21524441471911127
+38: Districts (nr.) >= 2.0 and Migration background - any non-western (%) <= 5.5 with quality 0.21525510793415778
+37: Migration background - remaining non-western (%) <= 3.3 with quality 0.21528080291295276
+36: Migration background - Maroccan (%) <= 0.6 and Migration background - any non-western (%) <= 5.5 with quality 0.21528637578205714
+35: Companies by type - agriculture, forestry, fishery (%) >= 0.051383399 and Migration background - Suriname (%) <= 0.6 with quality 0.21529102208358952
+34: Migration background - any non-western (%) <= 5.5 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.4 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.21529162236121216
+33: Migration background - remaining non-western (%) <= 3.1 and Migration background - remaining non-western (%) <= 3.3 with quality 0.21529520631149787
+32: Companies by type - transport, information, comunication (%) <= 0.069908815 and Migration background - Suriname (%) >= 0.1 with quality 0.21529989321391377
+31: Migration background - Maroccan (%) <= 0.5 and Migration background - Suriname (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.5 with quality 0.21530045765520955       
+30: Migration background - Maroccan (%) <= 0.5 and Population density (people/km2) <= 741.0 with quality 0.2153074582962202
+29: Migration background - Maroccan (%) <= 0.5 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.5 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.21532304100933547
+28: Migration background - Suriname (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 and Migration background - remaining non-western (%) <= 3.3 with quality 0.21532763356445578
+27: Districts (nr.) >= 2.0 and Migration background - remaining non-western (%) <= 3.3 with quality 0.21532959014678343
+26: Companies by type - transport, information, comunication (%) <= 0.069908815 with quality 0.21536446275077065
+25: Migration background - Suriname (%) >= 0.1 and Migration background - remaining non-western (%) <= 3.3 with quality 0.21537158054486238
+24: Migration background - any non-western (%) <= 5.5 and Migration background - remaining non-western (%) <= 3.3 with quality 0.21537704216915687
+23: Migration background - Suriname (%) <= 0.6 and Migration background - Suriname (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.3 with quality 0.21537945985912255       
+22: House ownership unknown (%) >= 0.1 and Migration background - remaining non-western (%) <= 3.3 with quality 0.21538001921279612
+21: Migration background - Suriname (%) <= 0.6 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.3 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.2153839180974242
+20: Companies by type - business services (%) <= 0.264343798 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.3 with quality 0.21543848902124338
+19: Companies by type - transport, information, comunication (%) <= 0.069908815 and Migration background - Suriname (%) <= 0.6 with quality 0.2154411396309531
+18: Migration background - Maroccan (%) <= 0.5 and Migration background - any non-western (%) <= 6.4 with quality 0.21545662574080376
+17: House ownership unknown (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.4 and Migration background - remaining non-western (%) <= 3.3 with quality 0.21545780429847788  
+16: House ownership unknown (%) >= 0.1 and Migration background - any non-western (%) <= 5.5 with quality 0.21548908493146127
+15: Migration background - Maroccan (%) <= 0.5 and Migration background - Suriname (%) <= 0.6 with quality 0.21549466191667807
+14: Migration background - Suriname (%) >= 0.1 and Migration background - any non-western (%) <= 5.5 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.21552369797331167
+13: Migration background - any non-western (%) <= 5.5 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 with quality 0.21554551061788152
+12: Migration background - Maroccan (%) <= 0.5 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.5 with quality 0.2155606423512204
+11: Housing density (houses/km2) <= 326.0 and Migration background - Maroccan (%) <= 0.5 with quality 0.21556877306446814
+10: Migration background - any non-western (%) <= 5.1 and Migration background - any non-western (%) <= 5.5 with quality 0.21558677430702375
+9: Migration background - Suriname (%) <= 0.5 and Migration background - remaining non-western (%) <= 3.3 with quality 0.21559968855111664
+8: Migration background - Suriname (%) >= 0.1 and Migration background - any non-western (%) <= 5.5 with quality 0.21560458241233854
+7: Migration background - Suriname (%) >= 0.1 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.4 and Migration background - remaining non-western (%) <= 3.3 with quality 0.2156814404934196
+6: Migration background - any non-western (%) <= 5.5 with quality 0.21568765125659456
+5: Migration background - any non-western (%) <= 5.5 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.4 with quality 0.2156942843986968
+4: Migration background - Suriname (%) <= 0.5 and Migration background - any non-western (%) <= 5.5 with quality 0.2157203913086236
+3: Migration background - former Dutch Antilles, Aruba  (%) <= 0.4 and Migration background - former Dutch Antilles, Aruba  (%) >= 0.1 and Migration background - remaining non-western (%) <= 3.3 with quality 0.21573017108260553
+2: Migration background - Suriname (%) <= 0.6 and Migration background - former Dutch Antilles, Aruba  (%) <= 0.3 with quality 0.21573052421440517
+1: Migration background - former Dutch Antilles, Aruba  (%) <= 0.4 and Migration background - remaining non-western (%) <= 3.3 with quality 0.2160036881134848
+Runtime 410.89 sec
