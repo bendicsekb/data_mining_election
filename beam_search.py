@@ -13,7 +13,7 @@ def beam_search(width: int, depth: int, bins: int, q: int, data: data_refinement
     heapq.heappush(candidate_queue, (0, 0, empty_description))
 
     for i in range(depth):
-        print(i)
+        #print(i)
         beam = []
 
         while len(candidate_queue) != 0:

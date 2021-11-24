@@ -140,7 +140,7 @@ class DataSet:
 
         self.MD = 1 / len(data) * np.sum(Mpis, axis=0)
         self.rank = self.compute_avg_rank()  # [x for x in range(1, 38)] for real world dataset
-        print(self.rank)
+        #print(self.rank)
 
 
     def compute_avg_rank(self):
