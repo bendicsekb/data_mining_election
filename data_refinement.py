@@ -161,7 +161,7 @@ class DataSet:
 
     def set_descriptor_types(self):
         for desc in self.descriptors:
-            self.descriptor_types[desc] = RuleType.NUMERICAL #RuleType.BINARY  # RuleType.NUMERICAL  # TODO: improve
+            self.descriptor_types[desc] = RuleType.BINARY  # RuleType.NUMERICAL  # TODO: improve
 
     def get_descriptor_type(self, descriptor):
         return self.descriptor_types[descriptor]
