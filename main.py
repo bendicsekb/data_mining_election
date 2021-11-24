@@ -140,7 +140,7 @@ if __name__ == '__main__':
                 else:
                     average_place = pd.NA
 
-                print("\nAnalysis of", folder_name, " completed in %.0f seconds" % (end_time - start_time))
+                print("Analysis of", folder_name, " completed in %.0f seconds" % (end_time - start_time))
                 print("Average place:", average_place, " - miss rate:", miss_rate_counter)
 
                 nrows = int(folder_name.split("_")[0][4:])
