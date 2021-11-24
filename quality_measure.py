@@ -25,7 +25,7 @@ def our_quality_measure(description: refine.Description, data: refine.DataSet, m
     complement_rows = len(complement_data)
     all_rows = subgroup_rows + complement_rows
 
-    if subgroup_rows <= 35 or complement_rows == 0:
+    if subgroup_rows <= 1 or complement_rows == 0:
         description.quality = 0.0
         return
 
