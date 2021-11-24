@@ -12,6 +12,7 @@ import beam_search
 
 # Synthetic dataset parameters
 PATH = ""  # file path to the datasets folder and should and with /
+FILE_NR_THRESHOLD = 5
 
 # Beam search parameters (all integers)
 w = 20  # None  # beam width
@@ -106,7 +107,7 @@ if __name__ == '__main__':
                 hit_rate_counter = 0  # counter of how many times subgroup is in the top-q
                 miss_rate_counter = 0  # counter of how many times subgroup is NOT in the top-q
                 start_time = time.time()
-                progress_bar = tqdm.tqdm(total=len(files))
+                progress_bar = tqdm.tqdm(total=min(len(files), FILE_NR_THRESHOLD))
                 acc_time = file_count = 0
                 
                 for file in files:
@@ -132,6 +133,9 @@ if __name__ == '__main__':
                         top_q_accumulator += value
 
                     progress_bar.update(1)
+
+                    if file_count > FILE_NR_THRESHOLD:
+                        break
 
                 progress_bar.close()
                 end_time = time.time()
