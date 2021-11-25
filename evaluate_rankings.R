@@ -3,7 +3,7 @@ library(mice)
 library(tidyverse)
 
 # Working directory
-setwd("C:/Users/20200059/Documents/Submissions/IDA_EPM/Material/rw_results")
+setwd("C:/Users/20200059/Documents/Github/data_mining_election/RealWorld/results/")
 
 data <- read.csv("../Demographic_and_election_dataset_ranked.csv", check.names=FALSE)
 
@@ -39,12 +39,11 @@ files <- c("entropy.txt", "entropy_compl.txt",
            "labelwise.txt", "norm.txt", "pairwise.txt")
 
 alldata <- as.data.frame(matrix(data=NA,nrow=0,ncol=38))
-
 for(i in 1:length(files)){
   file <- files[i]
   print(file)
-  results <- readLines(file, n=(q+1))[2:(q+1)]
   q <- 50
+  results <- readLines(file, n=(q+1))[2:(q+1)]
   if(sub(".*\\_", "", sub("\\..*", "", file)) == 'compl'){
     figuredata <- as.data.frame(matrix(data=NA,nrow=q,ncol=39)) %>%
       mutate(sg = c(1:q))
@@ -81,7 +80,7 @@ for(i in 1:length(files)){
       figuredata[qi+1,1:37] <- pidif
       figuredata[qi+1,38] <- nrow(subset)
     }
-    figuredata[,39] <- rep(paste0(sub("\\..*", "", file),".opp",""),q)
+    figuredata[,39] <- rep(paste0(sub("\\..*", "", file)," ",""),q)
     alldata <- rbind(alldata, figuredata)
   }
   # do this for all results
@@ -137,7 +136,7 @@ plotdata <- alldata %>%
   mutate(correction = ordered(correction,
                              levels = c("none", "entropy", "sqrtnN", "norm", "labelwise", "pairwise"))) %>%
   mutate(comparison = ordered(comparison,
-                              levels = c("compl", "compl.opp", "average"))) %>%
+                              levels = c("compl", "compl ", "average"))) %>%
   mutate(rank = replace(rank, rank > 10, 10))
 
 # overall plot
