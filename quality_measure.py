@@ -36,12 +36,12 @@ def our_quality_measure(description: refine.Description, data: refine.DataSet, m
 
         # faster method
         d_x_x_sum += np.sqrt(np.sum(((sub_target_vector - subgroup_data) ** 2), axis=1)).sum()
-        #d_x_y_sum += np.sqrt(np.sum(((sub_target_vector - complement_data) ** 2), axis=1)).sum()
-        d_x_y_sum += np.sqrt(
-            np.sum(((sub_target_vector - data.rank) ** 2)))  # same as np.linalg.norm(sub_target_vector - data.rank)
+        d_x_y_sum += np.sqrt(np.sum(((sub_target_vector - complement_data) ** 2), axis=1)).sum()
+        #d_x_y_sum += np.sqrt(
+        #    np.sum(((sub_target_vector - data.rank) ** 2)))  # same as np.linalg.norm(sub_target_vector - data.rank)
 
-    numerator = (1.0 / subgroup_rows) * d_x_y_sum
-    #numerator = (1.0 / (subgroup_rows * complement_rows)) * d_x_y_sum
+    #numerator = (1.0 / subgroup_rows) * d_x_y_sum
+    numerator = (1.0 / (subgroup_rows * complement_rows)) * d_x_y_sum
     denominator = (1.0 / (subgroup_rows * (subgroup_rows - 1))) * d_x_x_sum
 
     #print(numerator)

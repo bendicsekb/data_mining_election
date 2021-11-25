@@ -141,11 +141,18 @@ plotdata <- alldata %>%
 
 # overall plot
 plot <- plotdata %>%
-  filter(correction %in% c("none", "entropy", "sqrtnN")) %>%
-  #filter(correction %in% c("labelwise", "pairwise", "norm")) %>%
+  #filter(correction %in% c("none", "entropy", "sqrtnN")) %>%
+  filter(correction %in% c("labelwise", "pairwise", "norm")) %>%
   ggplot(aes(y=sg, x=lambda, fill=rank)) + 
   geom_tile(color="white") + 
-  facet_grid(comparison ~ correction, labeller = label_both) +
+  facet_grid(comparison ~ correction, 
+             #labeller = label_both) +
+             labeller = labeller(correction = 
+                        c("norm" = "type: norm",
+                          "labelwise" = "type: labelwise",
+                          "pairwise" = "type: pairwise"),
+                        comparison = 
+                          c("average" = "comparison: average"))) + 
   scale_colour_gradient2(low = "red", mid = "white",
                          high = "blue", midpoint = 0,
                          aesthetics = "fill",
@@ -154,8 +161,8 @@ plot <- plotdata %>%
   scale_y_continuous(expand = c(0, 0)) +
   guides(fill = guide_colorbar(barwidth = 3, barheight = 0.5)) + 
   xlab('Labels') + 
-  #ylab('Subgroup') +
-  ylab("Subgroup                                        Complement                                        Subgroup") +
+  ylab('Subgroup') +
+  #ylab("Subgroup                                        Complement                                        Subgroup") +
   theme_bw() + 
   theme(plot.title = element_text(vjust=-4), 
     panel.grid.major.x = element_blank(),
