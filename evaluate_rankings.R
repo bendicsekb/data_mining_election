@@ -154,7 +154,8 @@ plot <- plotdata %>%
   scale_y_continuous(expand = c(0, 0)) +
   guides(fill = guide_colorbar(barwidth = 3, barheight = 0.5)) + 
   xlab('Labels') + 
-  ylab('Subgroup') +
+  #ylab('Subgroup') +
+  ylab("Subgroup                                        Complement                                        Subgroup") +
   theme_bw() + 
   theme(plot.title = element_text(vjust=-4), 
     panel.grid.major.x = element_blank(),
@@ -176,9 +177,11 @@ ggsave(name, width = 20, height = 18, units = "cm")
 name <- paste('otherqms.pdf', sep = "", collapse = NULL)
 ggsave(name, width = 20, height = 7, units = "cm")
 
+alldata %>% filter(V39 == 'none') %>% filter(sg == 1)
+
 # make separate plots
 methods <- c("entropy", "none", "sqrtnN", "labelwise", "pairwise", "norm")
-types <- c("compl", "compl.opp", "average")
+types <- c("compl", "compl ", "average")
 for(i in 1:length(methods)){
   for(j in 1:length(types)){
     selmethod <- methods[i]
@@ -187,13 +190,14 @@ for(i in 1:length(methods)){
       seldata <- plotdata %>%
         filter(correction == selmethod) %>%
         filter(comparison == seltype)
+      if(seltype == "compl "){
+        seltype <- "compl.opp"
+      }
     } else {
       seldata <- plotdata %>%
         filter(correction == selmethod)
     }
-    plot <- plotdata %>%
-      filter(correction == selmethod) %>%
-      filter(comparison == seltype) %>%
+    plot <- seldata %>%
       ggplot(aes(y=sg, x=lambda, fill=rank)) + 
       geom_tile(color="white") + 
       scale_colour_gradient2(low = "red", mid = "white",
@@ -225,3 +229,63 @@ for(i in 1:length(methods)){
   }
 }
 
+# make a plot of the records in a subgroup
+file <- "none.txt"
+results <- readLines(file, n=(q+1))[2:(q+1)]
+q <- 50
+qi <- 1
+result <- results[q-qi]
+desc <- sub("\\ with.*", "", result)
+lits <- strsplit(desc,split=" and ")
+lits[[1]][1] <- sub(".*: ", "", lits[[1]][1])
+subset <- mutdata
+for(li in 1:length(lits[[1]])){
+  #print(li)
+  lit <- lits[[1]][li]
+  name <- sub("=.*", "", lit)
+  name <- substr(name,1,nchar(name)-2)
+  value <- as.numeric(sub(".*= ", "", lit))
+  sign <- tail(strsplit(sub("=.*", "", lit), split="")[[1]],n=1)
+  #print(name)
+  #print(value)
+  #print(sign)
+  if(sign == "<"){
+    subset <- subset[subset[,name] <= value,]
+  } else if(sign == ">"){
+    subset <- subset[subset[,name] >= value,]
+  }
+}
+# random sample of size 20
+set.seed(25112021)
+selection <- sample.int(n=nrow(subset), size=10, replace=FALSE)
+plot <- subset[selection,votinglist] %>%
+  rownames_to_column() %>%
+  gather("lambda", "rank", -rowname) %>%
+  mutate(rank = as.numeric(rank)) %>%
+  ggplot(aes(y=rowname, x=lambda, fill=rank)) + 
+  geom_tile(color="white") + 
+  scale_fill_gradient2(low = "white", high = "purple", 
+                        aesthetics = "fill") + 
+  scale_x_discrete(labels = as.character(c(1:37))) + 
+  scale_y_discrete(expand = c(0, 0)) +
+  guides(fill = guide_colorsteps(barwidth = 0.2)) + 
+  guides(fill = guide_legend(title = "Rank")) + 
+  xlab('Labels') + 
+  ylab('Record') +
+  theme_bw() + 
+  theme(plot.title = element_text(vjust=0, size=8), 
+        legend.box.margin=margin(0, 0, 0, -10),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        panel.border = element_blank(),
+        axis.line = element_line(colour = "black"),
+        axis.text.x = element_text(size=4),
+        axis.text.y = element_text(size=4),
+        axis.title = element_text(size=8),
+        legend.title = element_text(size = 6), 
+        legend.text  = element_text(size = 4))
+plot
+name <- paste0("subgroup1noneaverage.pdf", "")
+ggsave(name, width = 10, height = 3, units = "cm")
