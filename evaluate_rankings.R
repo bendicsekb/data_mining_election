@@ -141,20 +141,20 @@ plotdata <- alldata %>%
 
 # overall plot
 plot <- plotdata %>%
-  #filter(correction %in% c("none", "entropy", "sqrtnN")) %>%
-  filter(correction %in% c("labelwise", "pairwise", "norm")) %>%
+  filter(correction %in% c("none", "entropy", "sqrtnN")) %>%
+  #filter(correction %in% c("labelwise", "pairwise", "norm")) %>%
   ggplot(aes(y=sg, x=lambda, fill=rank)) + 
   geom_tile(color="white") + 
   facet_grid(comparison ~ correction, 
-             #labeller = label_both) +
-             labeller = labeller(correction = 
-                        c("norm" = "type: norm",
-                          "labelwise" = "type: labelwise",
-                          "pairwise" = "type: pairwise"),
-                        comparison = 
-                          c("average" = "comparison: average"))) + 
-  scale_colour_gradient2(low = "red", mid = "white",
-                         high = "blue", midpoint = 0,
+             labeller = label_both) +
+             #labeller = labeller(correction = 
+            #            c("norm" = "type: norm",
+            #              "labelwise" = "type: labelwise",
+            #              "pairwise" = "type: pairwise"),
+            #            comparison = 
+            #              c("average" = "comparison: average"))) + 
+  scale_colour_gradient2(low = "#a63603", mid = "white",
+                         high = "#1f78b4", midpoint = 0,
                          aesthetics = "fill",
                          limits=c(-10, 10)) + 
   scale_x_discrete(labels = as.character(c(1:37))) + 
@@ -271,12 +271,16 @@ plot <- subset[selection,votinglist] %>%
   mutate(rank = as.numeric(rank)) %>%
   ggplot(aes(y=rowname, x=lambda, fill=rank)) + 
   geom_tile(color="white") + 
-  scale_fill_gradient2(low = "white", high = "purple", 
-                        aesthetics = "fill") + 
+  scale_fill_steps(low = "white", high = "#b2df8a", limits = c(0,40)) + 
+  #scale_fill_gradient2(low = "white", high = "purple", 
+  #                     aesthetics = "fill",
+  #                     #breaks = c(0,5,10,15,20,25),
+  #                     limits = c(0,40)) + 
+  #metR::scale_fill_discretised() + 
   scale_x_discrete(labels = as.character(c(1:37))) + 
   scale_y_discrete(expand = c(0, 0)) +
-  guides(fill = guide_colorsteps(barwidth = 0.2)) + 
-  guides(fill = guide_legend(title = "Rank")) + 
+  guides(fill = guide_colorbar(barwidth = 0.4, barheight=3)) +
+  #guides(fill = guide_legend(title = "Rank")) + 
   xlab('Labels') + 
   ylab('Record') +
   theme_bw() + 
@@ -290,8 +294,8 @@ plot <- subset[selection,votinglist] %>%
         axis.line = element_line(colour = "black"),
         axis.text.x = element_text(size=4),
         axis.text.y = element_text(size=4),
-        axis.title = element_text(size=8),
-        legend.title = element_text(size = 6), 
+        axis.title = element_text(size=6),
+        legend.title = element_text(size = 4), 
         legend.text  = element_text(size = 4))
 plot
 name <- paste0("subgroup1noneaverage.pdf", "")
