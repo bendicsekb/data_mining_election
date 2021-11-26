@@ -11,13 +11,15 @@ import beam_search
 
 
 # Synthetic dataset parameters
-PATH = ""  # file path to the datasets folder and should and with /
+#PATH = "Synthetic/reversed/"  # file path to the datasets folder and should and with /
+#PATH = "Synthetic/pairwise_swapped/"
+PATH = "Synthetic/last_to_first/"
 FILE_NR_THRESHOLD = 5
 
 # Beam search parameters (all integers)
 w = 20  # None  # beam width
 d = 3  # None  # search depth
-b = 1  # None  # static binning bin size
+b = 1  # None  # not important for synthetic data experiment
 q = 10  # None  # top q subgroups to return
 
 
@@ -76,9 +78,9 @@ if __name__ == '__main__':
         if len(dirs) == 0:
             for file in files:
                 data = pd.read_csv(os.path.join(root, file), delimiter=",", index_col=0)
-                print(data.head())
-                input("Please check if the data got read in correctly\n"
-                      "if not then interrupt and change the parameters, or type any key to continue")
+                #print(data.head())
+                #input("Please check if the data got read in correctly\n"
+                #      "if not then interrupt and change the parameters, or type any key to continue")
                 break
             break
 
@@ -91,8 +93,9 @@ if __name__ == '__main__':
     if q is None:
         q = int(input("Enter the number of results to be returned (integer): "))
 
-    selected_methods = [data_refinement.Method.OUR_N, data_refinement.Method.OUR_SQRT, data_refinement.Method.OUR_ENTROPY,
-                        data_refinement.Method.NORM, data_refinement.Method.LABELWISE, data_refinement.Method.PAIRWISE]
+    #selected_methods = [data_refinement.Method.OUR_N, data_refinement.Method.OUR_SQRT, data_refinement.Method.OUR_ENTROPY,
+    #                    data_refinement.Method.NORM, data_refinement.Method.LABELWISE, data_refinement.Method.PAIRWISE]
+    selected_methods = [data_refinement.Method.OUR_NONE]
     output_files = [pd.DataFrame(columns=["Number of rows",
      "Number of descriptors", "Number of targets", 
      "Average position", "Miss rate", "Average Duration (s)"]) for _ in range(selected_methods[-1].value + 1)]
