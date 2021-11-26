@@ -26,7 +26,7 @@ plot <- data %>%
   geom_point(position = pd) + 
   scale_colour_manual(values = c("#a6cee3", "#1f78b4", "#b2df8a")) + 
   scale_shape_manual(values=c(4, 15, 2)) +
-  ylab('Runtime in seconds') + 
+  ylab('Run time in seconds') + 
   xlab('Quality measure') +
   #labs(title = '') + 
   theme_bw() + 
@@ -37,10 +37,10 @@ plot <- data %>%
         panel.grid.minor.y = element_blank(),
         panel.border = element_blank(),
         axis.line = element_line(colour = "black"),
-        axis.text.x = element_text(size=4),
-        axis.title = element_text(size=10),
-        legend.title = element_text(size = 6), 
-        legend.text  = element_text(size = 4),
+        axis.text.x = element_text(size=10),
+        axis.title = element_text(size=12),
+        legend.title = element_text(size = 10), 
+        legend.text  = element_text(size = 8),
         #legend.position="bottom",
         #legend.justification="right",
         #legend.margin=margin(-20, 0, 0, 0))
