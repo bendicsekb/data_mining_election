@@ -6,22 +6,26 @@ library(tidyverse)
 setwd("C:/Users/20200059/Documents/Github/data_mining_election/Synthetic/")
 
 data <- read.csv("reversed.csv")
+data <- read.csv("pairwise.csv")
+data <- read.csv("lasttofirst.csv")
 names(data)
 
 pd <- position_dodge(.65)
 plot <- data %>%
-  rename("rows" = names(data)[1]) %>%
-  gather("measure", "time", -c(rows, descs, targets)) %>%
-  mutate(rows = as.factor(rows)) %>%
-  mutate(targets = as.factor(targets)) %>%
-  mutate(descs = as.factor(descs)) %>%
+  rename("nrows" = names(data)[1]) %>%
+  gather("measure", "time", -c(nrows, ndescs, ntargets)) %>%
+  mutate(nrows = as.factor(nrows)) %>%
+  mutate(ntargets = as.factor(ntargets)) %>%
+  mutate(ndescs = as.factor(ndescs)) %>%
   mutate(measure = ordered(measure,
-                           levels = c("entropy", "sqrtnN", "norm", "labelwise", "pairwise"))) %>%
-  #filter(targets == 32) %>%
-  filter(descs == 32) %>%
-  filter(measure %in% c('entropy','norm')) %>%
-  ggplot(aes(x=measure, y=time, color=rows, shape=targets)) +
+                           levels = c("none", "entropy", "sqrtnN", "norm", "labelwise", "pairwise"))) %>%
+  #filter(ntargets == 32) %>%
+  filter(ndescs == 32) %>%
+  #filter(measure %in% c('entropy','norm')) %>%
+  ggplot(aes(x=measure, y=time, color=nrows, shape=ntargets)) +
   geom_point(position = pd) + 
+  scale_colour_manual(values = c("#a6cee3", "#1f78b4", "#b2df8a")) + 
+  scale_shape_manual(values=c(4, 15, 2)) +
   ylab('Runtime in seconds') + 
   xlab('Quality measure') +
   #labs(title = '') + 
@@ -43,5 +47,7 @@ plot <- data %>%
   )
 plot
 name <- paste('timereversed.pdf', sep = "", collapse = NULL)
-ggsave(name, width = 12, height = 10, units = "cm")
-
+name <- paste('timepairwise.pdf', sep = "", collapse = NULL)
+name <- paste('timelasttofirst.pdf', sep = "", collapse = NULL)
+ggsave(name, width = 20, height = 7, units = "cm")
+ggsave(name, width = 6, height = 8, units = "cm")
