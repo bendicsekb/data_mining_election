@@ -93,9 +93,9 @@ if __name__ == '__main__':
     if q is None:
         q = int(input("Enter the number of results to be returned (integer): "))
 
-    #selected_methods = [data_refinement.Method.OUR_N, data_refinement.Method.OUR_SQRT, data_refinement.Method.OUR_ENTROPY,
-    #                    data_refinement.Method.NORM, data_refinement.Method.LABELWISE, data_refinement.Method.PAIRWISE]
-    selected_methods = [data_refinement.Method.OUR_NONE]
+    selected_methods = [data_refinement.Method.OUR_N, data_refinement.Method.OUR_NONE, 
+                        data_refinement.Method.OUR_SQRT, data_refinement.Method.OUR_ENTROPY,
+                        data_refinement.Method.NORM, data_refinement.Method.LABELWISE, data_refinement.Method.PAIRWISE]
     output_files = [pd.DataFrame(columns=["Number of rows",
      "Number of descriptors", "Number of targets", 
      "Average position", "Miss rate", "Average Duration (s)"]) for _ in range(selected_methods[-1].value + 1)]
