@@ -1,4 +1,4 @@
-# 2AMM20 Research Topic in Data Mining Group 3
+# Synthetic data experiments as presented in manuscript ""
 import heapq
 import sys
 import os
