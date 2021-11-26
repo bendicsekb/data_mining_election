@@ -161,8 +161,8 @@ plot <- plotdata %>%
   scale_y_continuous(expand = c(0, 0)) +
   guides(fill = guide_colorbar(barwidth = 3, barheight = 0.5)) + 
   xlab('Labels') + 
-  ylab('Subgroup') +
-  #ylab("Subgroup                                        Complement                                        Subgroup") +
+  #ylab('Subgroup') +
+  ylab("Subgroup                                        Complement                                        Subgroup") +
   theme_bw() + 
   theme(plot.title = element_text(vjust=-4), 
     panel.grid.major.x = element_blank(),
